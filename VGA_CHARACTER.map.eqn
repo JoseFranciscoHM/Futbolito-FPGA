@@ -1,0 +1,579 @@
+-- Copyright (C) 1991-2005 Altera Corporation
+-- Your use of Altera Corporation's design tools, logic functions 
+-- and other software and tools, and its AMPP partner logic 
+-- functions, and any output files any of the foregoing 
+-- (including device programming or simulation files), and any 
+-- associated documentation or information are expressly subject 
+-- to the terms and conditions of the Altera Program License 
+-- Subscription Agreement, Altera MegaCore Function License 
+-- Agreement, or other applicable license agreement, including, 
+-- without limitation, that your use is for the sole purpose of 
+-- programming logic devices manufactured by Altera and sold by 
+-- Altera or its authorized distributors.  Please refer to the 
+-- applicable agreement for further details.
+--B1_red_out is VGA_SYNC:1|red_out
+B1_red_out = DFFEAS(B1_video_on, E1__clk0,  ,  ,  ,  ,  ,  ,  );
+
+
+--B1_green_out is VGA_SYNC:1|green_out
+B1_green_out = DFFEAS(B1L22, E1__clk0,  ,  ,  ,  ,  ,  ,  );
+
+
+--B1_horiz_sync_out is VGA_SYNC:1|horiz_sync_out
+B1_horiz_sync_out = DFFEAS(B1_horiz_sync, E1__clk0,  ,  ,  ,  ,  ,  ,  );
+
+
+--B1_vert_sync_out is VGA_SYNC:1|vert_sync_out
+B1_vert_sync_out = DFFEAS(B1_vert_sync, E1__clk0,  ,  ,  ,  ,  ,  ,  );
+
+
+--B1_video_on_h is VGA_SYNC:1|video_on_h
+B1_video_on_h = DFFEAS(B1L901, E1__clk0,  ,  ,  ,  ,  ,  ,  );
+
+
+--B1_video_on_v is VGA_SYNC:1|video_on_v
+B1_video_on_v = DFFEAS(B1L111, E1__clk0,  ,  ,  ,  ,  ,  ,  );
+
+
+--B1_video_on is VGA_SYNC:1|video_on
+B1_video_on = B1_video_on_h & B1_video_on_v;
+
+
+--E1__clk0 is VGA_SYNC:1|video_PLL:video_PLL_inst|altpll:altpll_component|_clk0
+E1__clk0 = PLL.CLK0(.ENA(), .CLKSWITCH(), .ARESET(), .PFDENA(), .INCLK(Clock_50Mhz), .INCLK());
+
+
+--J1_q_a[2] is Char_ROM:inst|lpm_rom:char_gen_rom|altrom:srom|altsyncram:rom_block|altsyncram_qvm:auto_generated|q_a[2]
+--RAM Block Operation Mode: ROM
+--Port A Depth: 256, Port A Width: 1
+--Port A Logical Depth: 512, Port A Logical Width: 8
+--Port A Input: Registered, Port A Output: Un-registered
+J1_q_a[2]_PORT_A_address = BUS(B1_pixel_row[1], B1_pixel_row[2], B1_pixel_row[3], B1_pixel_row[4], B1_pixel_row[5], B1_pixel_row[6], B1_pixel_row[7], B1_pixel_row[8]);
+J1_q_a[2]_PORT_A_address_reg = DFFE(J1_q_a[2]_PORT_A_address, J1_q_a[2]_clock_0, , , );
+J1_q_a[2]_clock_0 = E1__clk0;
+J1_q_a[2]_PORT_A_data_out = MEMORY(, , J1_q_a[2]_PORT_A_address_reg, , , , , , J1_q_a[2]_clock_0, , , , , );
+J1_q_a[2] = J1_q_a[2]_PORT_A_data_out[0];
+
+
+--B1_pixel_column[1] is VGA_SYNC:1|pixel_column[1]
+B1_pixel_column[1] = DFFEAS(B1_h_count[1], E1__clk0,  ,  , B1L04,  ,  ,  ,  );
+
+
+--J1_q_a[1] is Char_ROM:inst|lpm_rom:char_gen_rom|altrom:srom|altsyncram:rom_block|altsyncram_qvm:auto_generated|q_a[1]
+--RAM Block Operation Mode: ROM
+--Port A Depth: 256, Port A Width: 1
+--Port A Logical Depth: 512, Port A Logical Width: 8
+--Port A Input: Registered, Port A Output: Un-registered
+J1_q_a[1]_PORT_A_address = BUS(B1_pixel_row[1], B1_pixel_row[2], B1_pixel_row[3], B1_pixel_row[4], B1_pixel_row[5], B1_pixel_row[6], B1_pixel_row[7], B1_pixel_row[8]);
+J1_q_a[1]_PORT_A_address_reg = DFFE(J1_q_a[1]_PORT_A_address, J1_q_a[1]_clock_0, , , );
+J1_q_a[1]_clock_0 = E1__clk0;
+J1_q_a[1]_PORT_A_data_out = MEMORY(, , J1_q_a[1]_PORT_A_address_reg, , , , , , J1_q_a[1]_clock_0, , , , , );
+J1_q_a[1] = J1_q_a[1]_PORT_A_data_out[0];
+
+
+--B1_pixel_column[2] is VGA_SYNC:1|pixel_column[2]
+B1_pixel_column[2] = DFFEAS(B1_h_count[2], E1__clk0,  ,  , B1L04,  ,  ,  ,  );
+
+
+--J1_q_a[3] is Char_ROM:inst|lpm_rom:char_gen_rom|altrom:srom|altsyncram:rom_block|altsyncram_qvm:auto_generated|q_a[3]
+--RAM Block Operation Mode: ROM
+--Port A Depth: 256, Port A Width: 1
+--Port A Logical Depth: 512, Port A Logical Width: 8
+--Port A Input: Registered, Port A Output: Un-registered
+J1_q_a[3]_PORT_A_address = BUS(B1_pixel_row[1], B1_pixel_row[2], B1_pixel_row[3], B1_pixel_row[4], B1_pixel_row[5], B1_pixel_row[6], B1_pixel_row[7], B1_pixel_row[8]);
+J1_q_a[3]_PORT_A_address_reg = DFFE(J1_q_a[3]_PORT_A_address, J1_q_a[3]_clock_0, , , );
+J1_q_a[3]_clock_0 = E1__clk0;
+J1_q_a[3]_PORT_A_data_out = MEMORY(, , J1_q_a[3]_PORT_A_address_reg, , , , , , J1_q_a[3]_clock_0, , , , , );
+J1_q_a[3] = J1_q_a[3]_PORT_A_data_out[0];
+
+
+--C1L1 is Char_ROM:inst|rom_mux_output~30
+C1L1 = B1_pixel_column[1] & (B1_pixel_column[2]) # !B1_pixel_column[1] & (B1_pixel_column[2] & J1_q_a[1] # !B1_pixel_column[2] & (J1_q_a[3]));
+
+
+--J1_q_a[0] is Char_ROM:inst|lpm_rom:char_gen_rom|altrom:srom|altsyncram:rom_block|altsyncram_qvm:auto_generated|q_a[0]
+--RAM Block Operation Mode: ROM
+--Port A Depth: 256, Port A Width: 1
+--Port A Logical Depth: 512, Port A Logical Width: 8
+--Port A Input: Registered, Port A Output: Un-registered
+J1_q_a[0]_PORT_A_address = BUS(B1_pixel_row[1], B1_pixel_row[2], B1_pixel_row[3], B1_pixel_row[4], B1_pixel_row[5], B1_pixel_row[6], B1_pixel_row[7], B1_pixel_row[8]);
+J1_q_a[0]_PORT_A_address_reg = DFFE(J1_q_a[0]_PORT_A_address, J1_q_a[0]_clock_0, , , );
+J1_q_a[0]_clock_0 = E1__clk0;
+J1_q_a[0]_PORT_A_data_out = MEMORY(, , J1_q_a[0]_PORT_A_address_reg, , , , , , J1_q_a[0]_clock_0, , , , , );
+J1_q_a[0] = J1_q_a[0]_PORT_A_data_out[0];
+
+
+--C1L2 is Char_ROM:inst|rom_mux_output~31
+C1L2 = B1_pixel_column[1] & (C1L1 & (J1_q_a[0]) # !C1L1 & J1_q_a[2]) # !B1_pixel_column[1] & (C1L1);
+
+
+--J1_q_a[5] is Char_ROM:inst|lpm_rom:char_gen_rom|altrom:srom|altsyncram:rom_block|altsyncram_qvm:auto_generated|q_a[5]
+--RAM Block Operation Mode: ROM
+--Port A Depth: 256, Port A Width: 1
+--Port A Logical Depth: 512, Port A Logical Width: 8
+--Port A Input: Registered, Port A Output: Un-registered
+J1_q_a[5]_PORT_A_address = BUS(B1_pixel_row[1], B1_pixel_row[2], B1_pixel_row[3], B1_pixel_row[4], B1_pixel_row[5], B1_pixel_row[6], B1_pixel_row[7], B1_pixel_row[8]);
+J1_q_a[5]_PORT_A_address_reg = DFFE(J1_q_a[5]_PORT_A_address, J1_q_a[5]_clock_0, , , );
+J1_q_a[5]_clock_0 = E1__clk0;
+J1_q_a[5]_PORT_A_data_out = MEMORY(, , J1_q_a[5]_PORT_A_address_reg, , , , , , J1_q_a[5]_clock_0, , , , , );
+J1_q_a[5] = J1_q_a[5]_PORT_A_data_out[0];
+
+
+--J1_q_a[6] is Char_ROM:inst|lpm_rom:char_gen_rom|altrom:srom|altsyncram:rom_block|altsyncram_qvm:auto_generated|q_a[6]
+--RAM Block Operation Mode: ROM
+--Port A Depth: 256, Port A Width: 1
+--Port A Logical Depth: 512, Port A Logical Width: 8
+--Port A Input: Registered, Port A Output: Un-registered
+J1_q_a[6]_PORT_A_address = BUS(B1_pixel_row[1], B1_pixel_row[2], B1_pixel_row[3], B1_pixel_row[4], B1_pixel_row[5], B1_pixel_row[6], B1_pixel_row[7], B1_pixel_row[8]);
+J1_q_a[6]_PORT_A_address_reg = DFFE(J1_q_a[6]_PORT_A_address, J1_q_a[6]_clock_0, , , );
+J1_q_a[6]_clock_0 = E1__clk0;
+J1_q_a[6]_PORT_A_data_out = MEMORY(, , J1_q_a[6]_PORT_A_address_reg, , , , , , J1_q_a[6]_clock_0, , , , , );
+J1_q_a[6] = J1_q_a[6]_PORT_A_data_out[0];
+
+
+--J1_q_a[7] is Char_ROM:inst|lpm_rom:char_gen_rom|altrom:srom|altsyncram:rom_block|altsyncram_qvm:auto_generated|q_a[7]
+--RAM Block Operation Mode: ROM
+--Port A Depth: 256, Port A Width: 1
+--Port A Logical Depth: 512, Port A Logical Width: 8
+--Port A Input: Registered, Port A Output: Un-registered
+J1_q_a[7]_PORT_A_address = BUS(B1_pixel_row[1], B1_pixel_row[2], B1_pixel_row[3], B1_pixel_row[4], B1_pixel_row[5], B1_pixel_row[6], B1_pixel_row[7], B1_pixel_row[8]);
+J1_q_a[7]_PORT_A_address_reg = DFFE(J1_q_a[7]_PORT_A_address, J1_q_a[7]_clock_0, , , );
+J1_q_a[7]_clock_0 = E1__clk0;
+J1_q_a[7]_PORT_A_data_out = MEMORY(, , J1_q_a[7]_PORT_A_address_reg, , , , , , J1_q_a[7]_clock_0, , , , , );
+J1_q_a[7] = J1_q_a[7]_PORT_A_data_out[0];
+
+
+--C1L3 is Char_ROM:inst|rom_mux_output~32
+C1L3 = B1_pixel_column[2] & (B1_pixel_column[1]) # !B1_pixel_column[2] & (B1_pixel_column[1] & J1_q_a[6] # !B1_pixel_column[1] & (J1_q_a[7]));
+
+
+--J1_q_a[4] is Char_ROM:inst|lpm_rom:char_gen_rom|altrom:srom|altsyncram:rom_block|altsyncram_qvm:auto_generated|q_a[4]
+--RAM Block Operation Mode: ROM
+--Port A Depth: 256, Port A Width: 1
+--Port A Logical Depth: 512, Port A Logical Width: 8
+--Port A Input: Registered, Port A Output: Un-registered
+J1_q_a[4]_PORT_A_address = BUS(B1_pixel_row[1], B1_pixel_row[2], B1_pixel_row[3], B1_pixel_row[4], B1_pixel_row[5], B1_pixel_row[6], B1_pixel_row[7], B1_pixel_row[8]);
+J1_q_a[4]_PORT_A_address_reg = DFFE(J1_q_a[4]_PORT_A_address, J1_q_a[4]_clock_0, , , );
+J1_q_a[4]_clock_0 = E1__clk0;
+J1_q_a[4]_PORT_A_data_out = MEMORY(, , J1_q_a[4]_PORT_A_address_reg, , , , , , J1_q_a[4]_clock_0, , , , , );
+J1_q_a[4] = J1_q_a[4]_PORT_A_data_out[0];
+
+
+--C1L4 is Char_ROM:inst|rom_mux_output~33
+C1L4 = B1_pixel_column[2] & (C1L3 & (J1_q_a[4]) # !C1L3 & J1_q_a[5]) # !B1_pixel_column[2] & (C1L3);
+
+
+--B1_pixel_column[3] is VGA_SYNC:1|pixel_column[3]
+B1_pixel_column[3] = DFFEAS(B1_h_count[3], E1__clk0,  ,  , B1L04,  ,  ,  ,  );
+
+
+--B1L22 is VGA_SYNC:1|green_out~47
+B1L22 = B1_video_on & (B1_pixel_column[3] & C1L2 # !B1_pixel_column[3] & (C1L4));
+
+
+--B1_horiz_sync is VGA_SYNC:1|horiz_sync
+B1_horiz_sync = DFFEAS(B1L46, E1__clk0,  ,  ,  ,  ,  ,  ,  );
+
+
+--B1_vert_sync is VGA_SYNC:1|vert_sync
+B1_vert_sync = DFFEAS(B1L66, E1__clk0,  ,  ,  ,  ,  ,  ,  );
+
+
+--B1_h_count[9] is VGA_SYNC:1|h_count[9]
+B1_h_count[9] = DFFEAS(B1L43, E1__clk0,  ,  ,  ,  ,  ,  ,  );
+
+
+--B1_h_count[8] is VGA_SYNC:1|h_count[8]
+B1_h_count[8] = DFFEAS(B1L53, E1__clk0,  ,  ,  ,  ,  ,  ,  );
+
+
+--B1_h_count[7] is VGA_SYNC:1|h_count[7]
+B1_h_count[7] = DFFEAS(B1L51, E1__clk0,  ,  ,  ,  ,  ,  ,  );
+
+
+--B1L04 is VGA_SYNC:1|LessThan~707
+B1L04 = !B1_h_count[8] & !B1_h_count[7] # !B1_h_count[9];
+
+
+--B1_v_count[9] is VGA_SYNC:1|v_count[9]
+B1_v_count[9] = DFFEAS(B1L301, E1__clk0,  ,  ,  ,  ,  , B1L86,  );
+
+
+--B1_v_count[5] is VGA_SYNC:1|v_count[5]
+B1_v_count[5] = DFFEAS(B1L19, E1__clk0,  ,  ,  ,  ,  , B1L86,  );
+
+
+--B1_v_count[6] is VGA_SYNC:1|v_count[6]
+B1_v_count[6] = DFFEAS(B1L49, E1__clk0,  ,  ,  ,  ,  , B1L86,  );
+
+
+--B1_v_count[7] is VGA_SYNC:1|v_count[7]
+B1_v_count[7] = DFFEAS(B1L79, E1__clk0,  ,  ,  ,  ,  , B1L86,  );
+
+
+--B1_v_count[8] is VGA_SYNC:1|v_count[8]
+B1_v_count[8] = DFFEAS(B1L001, E1__clk0,  ,  ,  ,  ,  , B1L86,  );
+
+
+--B1L14 is VGA_SYNC:1|LessThan~708
+B1L14 = B1_v_count[5] & B1_v_count[6] & B1_v_count[7] & B1_v_count[8];
+
+
+--B1_v_count[4] is VGA_SYNC:1|v_count[4]
+B1_v_count[4] = DFFEAS(B1L88, E1__clk0,  ,  ,  ,  ,  , B1L86,  );
+
+
+--B1_v_count[0] is VGA_SYNC:1|v_count[0]
+B1_v_count[0] = DFFEAS(B1L67, E1__clk0,  ,  ,  ,  ,  , B1L86,  );
+
+
+--B1_v_count[1] is VGA_SYNC:1|v_count[1]
+B1_v_count[1] = DFFEAS(B1L97, E1__clk0,  ,  ,  ,  ,  , B1L86,  );
+
+
+--B1_v_count[2] is VGA_SYNC:1|v_count[2]
+B1_v_count[2] = DFFEAS(B1L28, E1__clk0,  ,  ,  ,  ,  , B1L86,  );
+
+
+--B1_v_count[3] is VGA_SYNC:1|v_count[3]
+B1_v_count[3] = DFFEAS(B1L58, E1__clk0,  ,  ,  ,  ,  , B1L86,  );
+
+
+--B1L24 is VGA_SYNC:1|LessThan~709
+B1L24 = B1_v_count[0] # B1_v_count[1] # B1_v_count[2] # B1_v_count[3];
+
+
+--B1L34 is VGA_SYNC:1|LessThan~710
+B1L34 = !B1_v_count[9] & (!B1_v_count[4] & !B1L24 # !B1L14);
+
+
+--B1_pixel_row[1] is VGA_SYNC:1|pixel_row[1]
+B1_pixel_row[1] = DFFEAS(B1_v_count[1], E1__clk0,  ,  , B1L34,  ,  ,  ,  );
+
+
+--B1_pixel_row[2] is VGA_SYNC:1|pixel_row[2]
+B1_pixel_row[2] = DFFEAS(B1_v_count[2], E1__clk0,  ,  , B1L34,  ,  ,  ,  );
+
+
+--B1_pixel_row[3] is VGA_SYNC:1|pixel_row[3]
+B1_pixel_row[3] = DFFEAS(B1_v_count[3], E1__clk0,  ,  , B1L34,  ,  ,  ,  );
+
+
+--B1_pixel_row[4] is VGA_SYNC:1|pixel_row[4]
+B1_pixel_row[4] = DFFEAS(B1_v_count[4], E1__clk0,  ,  , B1L34,  ,  ,  ,  );
+
+
+--B1_pixel_row[5] is VGA_SYNC:1|pixel_row[5]
+B1_pixel_row[5] = DFFEAS(B1_v_count[5], E1__clk0,  ,  , B1L34,  ,  ,  ,  );
+
+
+--B1_pixel_row[6] is VGA_SYNC:1|pixel_row[6]
+B1_pixel_row[6] = DFFEAS(B1_v_count[6], E1__clk0,  ,  , B1L34,  ,  ,  ,  );
+
+
+--B1_pixel_row[7] is VGA_SYNC:1|pixel_row[7]
+B1_pixel_row[7] = DFFEAS(B1_v_count[7], E1__clk0,  ,  , B1L34,  ,  ,  ,  );
+
+
+--B1_pixel_row[8] is VGA_SYNC:1|pixel_row[8]
+B1_pixel_row[8] = DFFEAS(B1_v_count[8], E1__clk0,  ,  , B1L34,  ,  ,  ,  );
+
+
+--B1_h_count[1] is VGA_SYNC:1|h_count[1]
+B1_h_count[1] = DFFEAS(B1L3, E1__clk0,  ,  ,  ,  ,  ,  ,  );
+
+
+--B1_h_count[2] is VGA_SYNC:1|h_count[2]
+B1_h_count[2] = DFFEAS(B1L5, E1__clk0,  ,  ,  ,  ,  ,  ,  );
+
+
+--B1_h_count[3] is VGA_SYNC:1|h_count[3]
+B1_h_count[3] = DFFEAS(B1L7, E1__clk0,  ,  ,  ,  ,  ,  ,  );
+
+
+--B1_h_count[5] is VGA_SYNC:1|h_count[5]
+B1_h_count[5] = DFFEAS(B1L63, E1__clk0,  ,  ,  ,  ,  ,  ,  );
+
+
+--B1_h_count[6] is VGA_SYNC:1|h_count[6]
+B1_h_count[6] = DFFEAS(B1L31, E1__clk0,  ,  ,  ,  ,  ,  ,  );
+
+
+--B1_h_count[4] is VGA_SYNC:1|h_count[4]
+B1_h_count[4] = DFFEAS(B1L9, E1__clk0,  ,  ,  ,  ,  ,  ,  );
+
+
+--B1L16 is VGA_SYNC:1|process0~359
+B1L16 = B1_h_count[3] & B1_h_count[4];
+
+
+--B1_h_count[0] is VGA_SYNC:1|h_count[0]
+B1_h_count[0] = DFFEAS(B1L73, E1__clk0,  ,  ,  ,  ,  ,  ,  );
+
+
+--B1L44 is VGA_SYNC:1|LessThan~711
+B1L44 = !B1_h_count[1] & !B1_h_count[2] & !B1_h_count[0];
+
+
+--B1L26 is VGA_SYNC:1|process0~360
+B1L26 = B1_h_count[5] & B1_h_count[6] & B1L16 & !B1L44;
+
+
+--B1L36 is VGA_SYNC:1|process0~361
+B1L36 = !B1_h_count[5] & !B1_h_count[6] & (!B1_h_count[4] # !B1_h_count[3]);
+
+
+--B1L07 is VGA_SYNC:1|reduce_nor~61
+B1L07 = B1_h_count[7] & !B1_h_count[8];
+
+
+--B1L46 is VGA_SYNC:1|process0~362
+B1L46 = B1L26 # B1L36 # !B1L07 # !B1_h_count[9];
+
+
+--B1L56 is VGA_SYNC:1|process0~363
+B1L56 = B1_v_count[9] # B1_v_count[1] & (B1_v_count[2] # !B1_v_count[0]) # !B1_v_count[1] & !B1_v_count[2];
+
+
+--B1L66 is VGA_SYNC:1|process0~364
+B1L66 = B1_v_count[4] # B1L56 # !B1L14 # !B1_v_count[3];
+
+
+--B1L1 is VGA_SYNC:1|add~317
+B1L1 = B1_h_count[0] $ VCC;
+
+--B1L2 is VGA_SYNC:1|add~318
+B1L2 = CARRY(B1_h_count[0]);
+
+
+--B1L3 is VGA_SYNC:1|add~319
+B1L3 = B1_h_count[1] & !B1L2 # !B1_h_count[1] & (B1L2 # GND);
+
+--B1L4 is VGA_SYNC:1|add~320
+B1L4 = CARRY(!B1L2 # !B1_h_count[1]);
+
+
+--B1L5 is VGA_SYNC:1|add~321
+B1L5 = B1_h_count[2] & (B1L4 $ GND) # !B1_h_count[2] & !B1L4 & VCC;
+
+--B1L6 is VGA_SYNC:1|add~322
+B1L6 = CARRY(B1_h_count[2] & !B1L4);
+
+
+--B1L7 is VGA_SYNC:1|add~323
+B1L7 = B1_h_count[3] & !B1L6 # !B1_h_count[3] & (B1L6 # GND);
+
+--B1L8 is VGA_SYNC:1|add~324
+B1L8 = CARRY(!B1L6 # !B1_h_count[3]);
+
+
+--B1L9 is VGA_SYNC:1|add~325
+B1L9 = B1_h_count[4] & (B1L8 $ GND) # !B1_h_count[4] & !B1L8 & VCC;
+
+--B1L01 is VGA_SYNC:1|add~326
+B1L01 = CARRY(B1_h_count[4] & !B1L8);
+
+
+--B1L11 is VGA_SYNC:1|add~327
+B1L11 = B1_h_count[5] & !B1L01 # !B1_h_count[5] & (B1L01 # GND);
+
+--B1L21 is VGA_SYNC:1|add~328
+B1L21 = CARRY(!B1L01 # !B1_h_count[5]);
+
+
+--B1L31 is VGA_SYNC:1|add~329
+B1L31 = B1_h_count[6] & (B1L21 $ GND) # !B1_h_count[6] & !B1L21 & VCC;
+
+--B1L41 is VGA_SYNC:1|add~330
+B1L41 = CARRY(B1_h_count[6] & !B1L21);
+
+
+--B1L51 is VGA_SYNC:1|add~331
+B1L51 = B1_h_count[7] & !B1L41 # !B1_h_count[7] & (B1L41 # GND);
+
+--B1L61 is VGA_SYNC:1|add~332
+B1L61 = CARRY(!B1L41 # !B1_h_count[7]);
+
+
+--B1L71 is VGA_SYNC:1|add~333
+B1L71 = B1_h_count[8] & (B1L61 $ GND) # !B1_h_count[8] & !B1L61 & VCC;
+
+--B1L81 is VGA_SYNC:1|add~334
+B1L81 = CARRY(B1_h_count[8] & !B1L61);
+
+
+--B1L91 is VGA_SYNC:1|add~335
+B1L91 = B1_h_count[9] $ B1L81;
+
+
+--B1L17 is VGA_SYNC:1|reduce_nor~62
+B1L17 = B1_h_count[7] # B1_h_count[3] # !B1_h_count[5] # !B1_h_count[8];
+
+
+--B1L27 is VGA_SYNC:1|reduce_nor~63
+B1L27 = B1_h_count[9] & B1L44 & !B1_h_count[6];
+
+
+--B1L43 is VGA_SYNC:1|h_count~418
+B1L43 = B1L91 & (B1_h_count[4] # B1L17 # !B1L27);
+
+
+--B1L53 is VGA_SYNC:1|h_count~419
+B1L53 = B1L71 & (B1_h_count[4] # B1L17 # !B1L27);
+
+
+--B1L37 is VGA_SYNC:1|reduce_nor~64
+B1L37 = B1_h_count[5] # !B1L27 # !B1L07 # !B1L16;
+
+
+--B1L67 is VGA_SYNC:1|v_count[0]~253
+B1L67 = B1_v_count[0] & (B1L37 $ GND) # !B1_v_count[0] & !B1L37 & VCC;
+
+--B1L77 is VGA_SYNC:1|v_count[0]~254
+B1L77 = CARRY(B1_v_count[0] & !B1L37);
+
+
+--B1L97 is VGA_SYNC:1|v_count[1]~255
+B1L97 = B1_v_count[1] & !B1L77 # !B1_v_count[1] & (B1L77 # GND);
+
+--B1L08 is VGA_SYNC:1|v_count[1]~256
+B1L08 = CARRY(!B1L77 # !B1_v_count[1]);
+
+
+--B1L28 is VGA_SYNC:1|v_count[2]~257
+B1L28 = B1_v_count[2] & (B1L08 $ GND) # !B1_v_count[2] & !B1L08 & VCC;
+
+--B1L38 is VGA_SYNC:1|v_count[2]~258
+B1L38 = CARRY(B1_v_count[2] & !B1L08);
+
+
+--B1L58 is VGA_SYNC:1|v_count[3]~259
+B1L58 = B1_v_count[3] & !B1L38 # !B1_v_count[3] & (B1L38 # GND);
+
+--B1L68 is VGA_SYNC:1|v_count[3]~260
+B1L68 = CARRY(!B1L38 # !B1_v_count[3]);
+
+
+--B1L88 is VGA_SYNC:1|v_count[4]~261
+B1L88 = B1_v_count[4] & (B1L68 $ GND) # !B1_v_count[4] & !B1L68 & VCC;
+
+--B1L98 is VGA_SYNC:1|v_count[4]~262
+B1L98 = CARRY(B1_v_count[4] & !B1L68);
+
+
+--B1L19 is VGA_SYNC:1|v_count[5]~263
+B1L19 = B1_v_count[5] & !B1L98 # !B1_v_count[5] & (B1L98 # GND);
+
+--B1L29 is VGA_SYNC:1|v_count[5]~264
+B1L29 = CARRY(!B1L98 # !B1_v_count[5]);
+
+
+--B1L49 is VGA_SYNC:1|v_count[6]~265
+B1L49 = B1_v_count[6] & (B1L29 $ GND) # !B1_v_count[6] & !B1L29 & VCC;
+
+--B1L59 is VGA_SYNC:1|v_count[6]~266
+B1L59 = CARRY(B1_v_count[6] & !B1L29);
+
+
+--B1L79 is VGA_SYNC:1|v_count[7]~267
+B1L79 = B1_v_count[7] & !B1L59 # !B1_v_count[7] & (B1L59 # GND);
+
+--B1L89 is VGA_SYNC:1|v_count[7]~268
+B1L89 = CARRY(!B1L59 # !B1_v_count[7]);
+
+
+--B1L001 is VGA_SYNC:1|v_count[8]~269
+B1L001 = B1_v_count[8] & (B1L89 $ GND) # !B1_v_count[8] & !B1L89 & VCC;
+
+--B1L101 is VGA_SYNC:1|v_count[8]~270
+B1L101 = CARRY(B1_v_count[8] & !B1L89);
+
+
+--B1L301 is VGA_SYNC:1|v_count[9]~271
+B1L301 = B1_v_count[9] $ B1L101;
+
+
+--B1L54 is VGA_SYNC:1|LessThan~712
+B1L54 = !B1_v_count[0] & !B1_v_count[1] # !B1_v_count[3] # !B1_v_count[2];
+
+
+--B1L64 is VGA_SYNC:1|LessThan~713
+B1L64 = !B1_v_count[4] & !B1_v_count[5] & !B1_v_count[6] & !B1_v_count[7];
+
+
+--B1L74 is VGA_SYNC:1|LessThan~714
+B1L74 = B1L54 & B1L64 & !B1_v_count[8];
+
+
+--B1L76 is VGA_SYNC:1|process0~365
+B1L76 = !B1_h_count[8] & !B1_h_count[7] # !B1_v_count[9] # !B1_h_count[9];
+
+
+--B1L86 is VGA_SYNC:1|process0~366
+B1L86 = !B1L74 & !B1L76 & (B1_h_count[8] # !B1L36);
+
+
+--B1L63 is VGA_SYNC:1|h_count~420
+B1L63 = B1L11 & (B1_h_count[4] # B1L17 # !B1L27);
+
+
+--B1L73 is VGA_SYNC:1|h_count~421
+B1L73 = B1L1 & (B1_h_count[4] # B1L17 # !B1L27);
+
+
+--B1L901 is VGA_SYNC:1|video_on_h~2
+B1L901 = B1L04;
+
+
+--B1L111 is VGA_SYNC:1|video_on_v~2
+B1L111 = B1L34;
+
+
+--Clock_50Mhz is Clock_50Mhz
+--operation mode is input
+
+Clock_50Mhz = INPUT();
+
+
+--VGA_Red is VGA_Red
+--operation mode is output
+
+VGA_Red = OUTPUT(B1_red_out);
+
+
+--VGA_Green is VGA_Green
+--operation mode is output
+
+VGA_Green = OUTPUT(B1_green_out);
+
+
+--VGA_HSync is VGA_HSync
+--operation mode is output
+
+VGA_HSync = OUTPUT(B1_horiz_sync_out);
+
+
+--VGA_VSync is VGA_VSync
+--operation mode is output
+
+VGA_VSync = OUTPUT(B1_vert_sync_out);
+
+
+--VGA_Blue is VGA_Blue
+--operation mode is output
+
+VGA_Blue = OUTPUT(B1_green_out);
+
+
+--video_blank_out is video_blank_out
+--operation mode is output
+
+video_blank_out = OUTPUT(B1_video_on);
+
+
+--video_clock_out is video_clock_out
+--operation mode is output
+
+video_clock_out = OUTPUT(E1__clk0);
+
+

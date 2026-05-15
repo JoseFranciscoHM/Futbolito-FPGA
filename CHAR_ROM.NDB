@@ -1,0 +1,68 @@
+NDB006
+The number of symbol table entries is: 3
+The length of the symbol table is: 71
+
+Index Hierarchy Path
+----- --------------
+!	&null_hpath&
+.	|LPM_ROM:char_gen_rom|
+E	|LPM_ROM:char_gen_rom|altrom:srom|
+
+The number of name info structs is : 54
+
+InsOrder BitField SymTableIndex NextSyn SynParent Loc ChainType NextChain ChainParent FanOut DirExp ParExp ShareExp NodeName
+-------- -------- ------------- ------- --------- --- --------- --------- ----------- ------ ------ ------ -------- --------
+"	IeEA	!	33	1	:60	"c
+#	IeEA	!	33	1	:61	"d
+$	IeEA	!	33	1	:62	"e
+%	L8f/	!	33	1	1	F	:69	"l
+&	IeEA	!	33	1	:70	"m
+'	IeEA	!	33	1	:71	"n
+(	L8f/	!	33	1	1	%	:72	"o
+)	IeEA	!	33	1	:73	"p
+*	IeEA	!	33	1	:74	"q
++	L8f/	!	33	1	1	(	:75	"r
+,	IeEA	!	33	1	:76	"s
+-	IeEA	!	33	1	:77	"t
+.	L8f/	!	33	1	1	(	:78	"u
+/	IeEA	!	33	1	:79	"v
+0	IeEA	!	33	1	:80	"w
+1	IeEA	!	33	1	:81	"x
+2	L8f/	!	33	1	1	%	:82	"y
+3	L8f/	!	33	1	1	%	:83	"z
+4	IeEA	!	33	1	:84	"{
+5	IeEA	!	33	1	:85	"|
+6	IeEA	!	33	1	:86	"}
+7	IeEA	!	33	1	:87	"~
+8	IeEA	!	33	1	:88	#!
+9	IeEA	!	33	1	:89	#"
+:	"?%_n	!	9	17	8	H	I	J	K	L	M	N	O	character_address0	!	character_address0	r
+;	"?%_n	!	9	17	8	H	I	J	K	L	M	N	O	character_address1	!	character_address1	q
+<	"?%_n	!	9	17	8	H	I	J	K	L	M	N	O	character_address2	!	character_address2	p
+=	"?%_n	!	9	17	8	H	I	J	K	L	M	N	O	character_address3	!	character_address3	o
+>	"?%_n	!	9	17	8	H	I	J	K	L	M	N	O	character_address4	!	character_address4	n
+?	"?%_n	!	9	17	8	H	I	J	K	L	M	N	O	character_address5	!	character_address5	m
+@	"?%_n	!	10	25	4	+	.	2	3	font_col0	!	font_col0	x
+A	"?%_n	!	10	25	3	(	2	3	font_col1	!	font_col1	w
+B	"?%_n	!	10	25	1	%	font_col2	!	font_col2	v
+C	"?%_n	!	10	25	8	H	I	J	K	L	M	N	O	font_row0	!	font_row0	u
+D	"?%_n	!	10	25	8	H	I	J	K	L	M	N	O	font_row1	!	font_row1	t
+E	"?%_n	!	10	25	8	H	I	J	K	L	M	N	O	font_row2	!	font_row2	s
+F	IeE[	!	11	25	rom_mux_output	y
+G	#/?91	E	82	3	content	0	$$
+H	#1pY}	E	92	11	1	+	segment0_0	2	$,
+I	#1pY}	E	92	11	1	+	segment0_1	2	$+
+J	#1pY}	E	92	11	1	.	segment0_2	2	$*
+K	#1pY}	E	92	11	1	.	segment0_3	2	$)
+L	#1pY}	E	92	11	1	2	segment0_4	2	$(
+M	#1pY}	E	92	11	1	2	segment0_5	2	$'
+N	#1pY}	E	92	11	1	3	segment0_6	2	$&
+O	#1pY}	E	92	11	1	3	segment0_7	2	$%
+P	IeEA	.	70	6	otri0	#f
+Q	IeEA	.	70	6	otri1	#e
+R	IeEA	.	70	6	otri2	#d
+S	IeEA	.	70	6	otri3	#c
+T	IeEA	.	70	6	otri4	#b
+U	IeEA	.	70	6	otri5	#a
+V	IeEA	.	70	6	otri6	#`
+W	IeEA	.	70	6	otri7	#_

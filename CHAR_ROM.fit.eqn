@@ -1,0 +1,208 @@
+-- Copyright (C) 1991-2005 Altera Corporation
+-- Your use of Altera Corporation's design tools, logic functions 
+-- and other software and tools, and its AMPP partner logic 
+-- functions, and any output files any of the foregoing 
+-- (including device programming or simulation files), and any 
+-- associated documentation or information are expressly subject 
+-- to the terms and conditions of the Altera Program License 
+-- Subscription Agreement, Altera MegaCore Function License 
+-- Agreement, or other applicable license agreement, including, 
+-- without limitation, that your use is for the sole purpose of 
+-- programming logic devices manufactured by Altera and sold by 
+-- Altera or its authorized distributors.  Please refer to the 
+-- applicable agreement for further details.
+--C1_q[2] is lpm_rom:char_gen_rom|altrom:srom|q[2] at EC3_A
+C1_q[2]_clock_0 = GLOBAL(clock);
+C1_q[2]_write_address = WR_ADDR(font_row[0], font_row[1], font_row[2], character_address[0], character_address[1], character_address[2], character_address[3], character_address[4], character_address[5]);
+C1_q[2]_read_address = RD_ADDR(font_row[0], font_row[1], font_row[2], character_address[0], character_address[1], character_address[2], character_address[3], character_address[4], character_address[5]);
+C1_q[2] = MEMORY_SEGMENT(, , C1_q[2]_clock_0, , , , , , C1_q[2]_write_address, C1_q[2]_read_address);
+
+
+--C1_q[1] is lpm_rom:char_gen_rom|altrom:srom|q[1] at EC3_C
+C1_q[1]_clock_0 = GLOBAL(clock);
+C1_q[1]_write_address = WR_ADDR(font_row[0], font_row[1], font_row[2], character_address[0], character_address[1], character_address[2], character_address[3], character_address[4], character_address[5]);
+C1_q[1]_read_address = RD_ADDR(font_row[0], font_row[1], font_row[2], character_address[0], character_address[1], character_address[2], character_address[3], character_address[4], character_address[5]);
+C1_q[1] = MEMORY_SEGMENT(, , C1_q[1]_clock_0, , , , , , C1_q[1]_write_address, C1_q[1]_read_address);
+
+
+--C1_q[3] is lpm_rom:char_gen_rom|altrom:srom|q[3] at EC2_C
+C1_q[3]_clock_0 = GLOBAL(clock);
+C1_q[3]_write_address = WR_ADDR(font_row[0], font_row[1], font_row[2], character_address[0], character_address[1], character_address[2], character_address[3], character_address[4], character_address[5]);
+C1_q[3]_read_address = RD_ADDR(font_row[0], font_row[1], font_row[2], character_address[0], character_address[1], character_address[2], character_address[3], character_address[4], character_address[5]);
+C1_q[3] = MEMORY_SEGMENT(, , C1_q[3]_clock_0, , , , , , C1_q[3]_write_address, C1_q[3]_read_address);
+
+
+--A1L71 is Mux~11 at LC1_C14
+--operation mode is normal
+
+A1L71 = font_col[0] & (font_col[1]) # !font_col[0] & (font_col[1] & C1_q[1] # !font_col[1] & (C1_q[3]));
+
+--A1L22 is Mux~16 at LC1_C14
+--operation mode is normal
+
+A1L22 = font_col[0] & (font_col[1]) # !font_col[0] & (font_col[1] & C1_q[1] # !font_col[1] & (C1_q[3]));
+
+
+--C1_q[0] is lpm_rom:char_gen_rom|altrom:srom|q[0] at EC4_C
+C1_q[0]_clock_0 = GLOBAL(clock);
+C1_q[0]_write_address = WR_ADDR(font_row[0], font_row[1], font_row[2], character_address[0], character_address[1], character_address[2], character_address[3], character_address[4], character_address[5]);
+C1_q[0]_read_address = RD_ADDR(font_row[0], font_row[1], font_row[2], character_address[0], character_address[1], character_address[2], character_address[3], character_address[4], character_address[5]);
+C1_q[0] = MEMORY_SEGMENT(, , C1_q[0]_clock_0, , , , , , C1_q[0]_write_address, C1_q[0]_read_address);
+
+
+--A1L81 is Mux~12 at LC2_C14
+--operation mode is normal
+
+A1L81 = font_col[0] & (A1L71 & (C1_q[0]) # !A1L71 & C1_q[2]) # !font_col[0] & (A1L71);
+
+--A1L32 is Mux~17 at LC2_C14
+--operation mode is normal
+
+A1L32 = font_col[0] & (A1L71 & (C1_q[0]) # !A1L71 & C1_q[2]) # !font_col[0] & (A1L71);
+
+
+--C1_q[5] is lpm_rom:char_gen_rom|altrom:srom|q[5] at EC1_C
+C1_q[5]_clock_0 = GLOBAL(clock);
+C1_q[5]_write_address = WR_ADDR(font_row[0], font_row[1], font_row[2], character_address[0], character_address[1], character_address[2], character_address[3], character_address[4], character_address[5]);
+C1_q[5]_read_address = RD_ADDR(font_row[0], font_row[1], font_row[2], character_address[0], character_address[1], character_address[2], character_address[3], character_address[4], character_address[5]);
+C1_q[5] = MEMORY_SEGMENT(, , C1_q[5]_clock_0, , , , , , C1_q[5]_write_address, C1_q[5]_read_address);
+
+
+--C1_q[6] is lpm_rom:char_gen_rom|altrom:srom|q[6] at EC2_A
+C1_q[6]_clock_0 = GLOBAL(clock);
+C1_q[6]_write_address = WR_ADDR(font_row[0], font_row[1], font_row[2], character_address[0], character_address[1], character_address[2], character_address[3], character_address[4], character_address[5]);
+C1_q[6]_read_address = RD_ADDR(font_row[0], font_row[1], font_row[2], character_address[0], character_address[1], character_address[2], character_address[3], character_address[4], character_address[5]);
+C1_q[6] = MEMORY_SEGMENT(, , C1_q[6]_clock_0, , , , , , C1_q[6]_write_address, C1_q[6]_read_address);
+
+
+--C1_q[7] is lpm_rom:char_gen_rom|altrom:srom|q[7] at EC4_A
+C1_q[7]_clock_0 = GLOBAL(clock);
+C1_q[7]_write_address = WR_ADDR(font_row[0], font_row[1], font_row[2], character_address[0], character_address[1], character_address[2], character_address[3], character_address[4], character_address[5]);
+C1_q[7]_read_address = RD_ADDR(font_row[0], font_row[1], font_row[2], character_address[0], character_address[1], character_address[2], character_address[3], character_address[4], character_address[5]);
+C1_q[7] = MEMORY_SEGMENT(, , C1_q[7]_clock_0, , , , , , C1_q[7]_write_address, C1_q[7]_read_address);
+
+
+--A1L91 is Mux~13 at LC3_C14
+--operation mode is normal
+
+A1L91 = font_col[1] & (font_col[0]) # !font_col[1] & (font_col[0] & C1_q[6] # !font_col[0] & (C1_q[7]));
+
+--A1L42 is Mux~18 at LC3_C14
+--operation mode is normal
+
+A1L42 = font_col[1] & (font_col[0]) # !font_col[1] & (font_col[0] & C1_q[6] # !font_col[0] & (C1_q[7]));
+
+
+--C1_q[4] is lpm_rom:char_gen_rom|altrom:srom|q[4] at EC1_A
+C1_q[4]_clock_0 = GLOBAL(clock);
+C1_q[4]_write_address = WR_ADDR(font_row[0], font_row[1], font_row[2], character_address[0], character_address[1], character_address[2], character_address[3], character_address[4], character_address[5]);
+C1_q[4]_read_address = RD_ADDR(font_row[0], font_row[1], font_row[2], character_address[0], character_address[1], character_address[2], character_address[3], character_address[4], character_address[5]);
+C1_q[4] = MEMORY_SEGMENT(, , C1_q[4]_clock_0, , , , , , C1_q[4]_write_address, C1_q[4]_read_address);
+
+
+--A1L02 is Mux~14 at LC4_C14
+--operation mode is normal
+
+A1L02 = font_col[1] & (A1L91 & (C1_q[4]) # !A1L91 & C1_q[5]) # !font_col[1] & (A1L91);
+
+--A1L52 is Mux~19 at LC4_C14
+--operation mode is normal
+
+A1L52 = font_col[1] & (A1L91 & (C1_q[4]) # !A1L91 & C1_q[5]) # !font_col[1] & (A1L91);
+
+
+--A1L12 is Mux~15 at LC6_C14
+--operation mode is normal
+
+A1L12 = font_col[2] & A1L81 # !font_col[2] & (A1L02);
+
+--A1L62 is Mux~20 at LC6_C14
+--operation mode is normal
+
+A1L62 = font_col[2] & A1L81 # !font_col[2] & (A1L02);
+
+
+--font_col[0] is font_col[0] at PIN_29
+--operation mode is input
+
+font_col[0] = INPUT();
+
+
+--font_col[1] is font_col[1] at PIN_30
+--operation mode is input
+
+font_col[1] = INPUT();
+
+
+--font_col[2] is font_col[2] at PIN_59
+--operation mode is input
+
+font_col[2] = INPUT();
+
+
+--clock is clock at PIN_43
+--operation mode is input
+
+clock = INPUT();
+
+
+--font_row[0] is font_row[0] at PIN_84
+--operation mode is input
+
+font_row[0] = INPUT();
+
+
+--font_row[1] is font_row[1] at PIN_2
+--operation mode is input
+
+font_row[1] = INPUT();
+
+
+--font_row[2] is font_row[2] at PIN_44
+--operation mode is input
+
+font_row[2] = INPUT();
+
+
+--character_address[0] is character_address[0] at PIN_42
+--operation mode is input
+
+character_address[0] = INPUT();
+
+
+--character_address[1] is character_address[1] at PIN_1
+--operation mode is input
+
+character_address[1] = INPUT();
+
+
+--character_address[2] is character_address[2] at PIN_7
+--operation mode is input
+
+character_address[2] = INPUT();
+
+
+--character_address[3] is character_address[3] at PIN_8
+--operation mode is input
+
+character_address[3] = INPUT();
+
+
+--character_address[4] is character_address[4] at PIN_5
+--operation mode is input
+
+character_address[4] = INPUT();
+
+
+--character_address[5] is character_address[5] at PIN_39
+--operation mode is input
+
+character_address[5] = INPUT();
+
+
+--rom_mux_output is rom_mux_output at PIN_58
+--operation mode is output
+
+rom_mux_output = OUTPUT(A1L12);
+
+

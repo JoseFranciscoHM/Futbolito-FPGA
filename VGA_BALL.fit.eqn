@@ -1,0 +1,863 @@
+-- Copyright (C) 1991-2005 Altera Corporation
+-- Your use of Altera Corporation's design tools, logic functions 
+-- and other software and tools, and its AMPP partner logic 
+-- functions, and any output files any of the foregoing 
+-- (including device programming or simulation files), and any 
+-- associated documentation or information are expressly subject 
+-- to the terms and conditions of the Altera Program License 
+-- Subscription Agreement, Altera MegaCore Function License 
+-- Agreement, or other applicable license agreement, including, 
+-- without limitation, that your use is for the sole purpose of 
+-- programming logic devices manufactured by Altera and sold by 
+-- Altera or its authorized distributors.  Please refer to the 
+-- applicable agreement for further details.
+--B1_red_out is VGA_SYNC:1|red_out at LCFF_X20_Y35_N13
+B1_red_out = DFFEAS(B1L721, GLOBAL(E1L2),  ,  ,  ,  ,  ,  ,  );
+
+
+--B1_green_out is VGA_SYNC:1|green_out at LCFF_X20_Y35_N3
+B1_green_out = DFFEAS(B1L82, GLOBAL(E1L2),  ,  ,  ,  ,  ,  ,  );
+
+
+--B1_horiz_sync_out is VGA_SYNC:1|horiz_sync_out at LCFF_X17_Y34_N21
+B1_horiz_sync_out = DFFEAS(B1L64, GLOBAL(E1L2),  ,  ,  ,  ,  ,  ,  );
+
+
+--B1_vert_sync_out is VGA_SYNC:1|vert_sync_out at LCFF_X21_Y34_N21
+B1_vert_sync_out = DFFEAS(B1L421, GLOBAL(E1L2),  ,  ,  ,  ,  ,  ,  );
+
+
+--B1_video_on_h is VGA_SYNC:1|video_on_h at LCFF_X19_Y34_N9
+B1_video_on_h = DFFEAS(B1L74, GLOBAL(E1L2),  ,  ,  ,  ,  ,  ,  );
+
+
+--B1_video_on_v is VGA_SYNC:1|video_on_v at LCFF_X21_Y34_N13
+B1_video_on_v = DFFEAS(B1L05, GLOBAL(E1L2),  ,  ,  ,  ,  ,  ,  );
+
+
+--B1L721 is VGA_SYNC:1|video_on~8 at LCCOMB_X20_Y35_N12
+B1L721 = B1_video_on_h & B1_video_on_v;
+
+
+--E1__clk0 is VGA_SYNC:1|video_PLL:video_PLL_inst|altpll:altpll_component|_clk0 at PLL_1
+E1__clk0 = PLL.CLK0(.ENA(), .CLKSWITCH(), .ARESET(), .PFDENA(), .INCLK(Clock_50Mhz), .INCLK());
+
+
+--B1_pixel_row[8] is VGA_SYNC:1|pixel_row[8] at LCFF_X21_Y35_N29
+B1_pixel_row[8] = DFFEAS(UNCONNECTED_DATAIN, GLOBAL(E1L2),  ,  , B1L05, B1_v_count[8],  ,  , VCC);
+
+
+--B1_pixel_row[7] is VGA_SYNC:1|pixel_row[7] at LCFF_X21_Y35_N27
+B1_pixel_row[7] = DFFEAS(UNCONNECTED_DATAIN, GLOBAL(E1L2),  ,  , B1L05, B1_v_count[7],  ,  , VCC);
+
+
+--B1_pixel_row[6] is VGA_SYNC:1|pixel_row[6] at LCFF_X21_Y35_N25
+B1_pixel_row[6] = DFFEAS(UNCONNECTED_DATAIN, GLOBAL(E1L2),  ,  , B1L05, B1_v_count[6],  ,  , VCC);
+
+
+--B1_pixel_row[5] is VGA_SYNC:1|pixel_row[5] at LCFF_X21_Y35_N23
+B1_pixel_row[5] = DFFEAS(UNCONNECTED_DATAIN, GLOBAL(E1L2),  ,  , B1L05, B1_v_count[5],  ,  , VCC);
+
+
+--B1_pixel_row[4] is VGA_SYNC:1|pixel_row[4] at LCFF_X21_Y35_N21
+B1_pixel_row[4] = DFFEAS(UNCONNECTED_DATAIN, GLOBAL(E1L2),  ,  , B1L05, B1_v_count[4],  ,  , VCC);
+
+
+--B1_pixel_row[3] is VGA_SYNC:1|pixel_row[3] at LCFF_X21_Y35_N19
+B1_pixel_row[3] = DFFEAS(UNCONNECTED_DATAIN, GLOBAL(E1L2),  ,  , B1L05, B1_v_count[3],  ,  , VCC);
+
+
+--C1L1 is ball:inst|add~785 at LCCOMB_X21_Y35_N18
+C1L1 = B1_pixel_row[3] $ VCC;
+
+--C1L2 is ball:inst|add~786 at LCCOMB_X21_Y35_N18
+C1L2 = CARRY(B1_pixel_row[3]);
+
+
+--C1L3 is ball:inst|add~787 at LCCOMB_X21_Y35_N20
+C1L3 = B1_pixel_row[4] & !C1L2 # !B1_pixel_row[4] & (C1L2 # GND);
+
+--C1L4 is ball:inst|add~788 at LCCOMB_X21_Y35_N20
+C1L4 = CARRY(!C1L2 # !B1_pixel_row[4]);
+
+
+--C1L5 is ball:inst|add~789 at LCCOMB_X21_Y35_N22
+C1L5 = B1_pixel_row[5] & (C1L4 $ GND) # !B1_pixel_row[5] & !C1L4 & VCC;
+
+--C1L6 is ball:inst|add~790 at LCCOMB_X21_Y35_N22
+C1L6 = CARRY(B1_pixel_row[5] & !C1L4);
+
+
+--C1L7 is ball:inst|add~791 at LCCOMB_X21_Y35_N24
+C1L7 = B1_pixel_row[6] & !C1L6 # !B1_pixel_row[6] & (C1L6 # GND);
+
+--C1L8 is ball:inst|add~792 at LCCOMB_X21_Y35_N24
+C1L8 = CARRY(!C1L6 # !B1_pixel_row[6]);
+
+
+--C1L9 is ball:inst|add~793 at LCCOMB_X21_Y35_N26
+C1L9 = B1_pixel_row[7] & (C1L8 $ GND) # !B1_pixel_row[7] & !C1L8 & VCC;
+
+--C1L01 is ball:inst|add~794 at LCCOMB_X21_Y35_N26
+C1L01 = CARRY(B1_pixel_row[7] & !C1L8);
+
+
+--C1L11 is ball:inst|add~795 at LCCOMB_X21_Y35_N28
+C1L11 = B1_pixel_row[8] & !C1L01 # !B1_pixel_row[8] & (C1L01 # GND);
+
+--C1L21 is ball:inst|add~796 at LCCOMB_X21_Y35_N28
+C1L21 = CARRY(!C1L01 # !B1_pixel_row[8]);
+
+
+--C1L31 is ball:inst|add~797 at LCCOMB_X21_Y35_N30
+C1L31 = !C1L21;
+
+
+--C1_Ball_Y_pos[9] is ball:inst|Ball_Y_pos[9] at LCFF_X19_Y35_N17
+C1_Ball_Y_pos[9] = DFFEAS(C1L47, GLOBAL(B1L321),  ,  ,  ,  ,  ,  ,  );
+
+
+--C1_Ball_Y_pos[8] is ball:inst|Ball_Y_pos[8] at LCFF_X19_Y35_N15
+C1_Ball_Y_pos[8] = DFFEAS(C1L17, GLOBAL(B1L321),  ,  ,  ,  ,  ,  ,  );
+
+
+--C1_Ball_Y_pos[7] is ball:inst|Ball_Y_pos[7] at LCFF_X19_Y35_N13
+C1_Ball_Y_pos[7] = DFFEAS(C1L86, GLOBAL(B1L321),  ,  ,  ,  ,  ,  ,  );
+
+
+--C1_Ball_Y_pos[6] is ball:inst|Ball_Y_pos[6] at LCFF_X19_Y35_N11
+C1_Ball_Y_pos[6] = DFFEAS(C1L56, GLOBAL(B1L321),  ,  ,  ,  ,  ,  ,  );
+
+
+--C1_Ball_Y_pos[5] is ball:inst|Ball_Y_pos[5] at LCFF_X19_Y35_N9
+C1_Ball_Y_pos[5] = DFFEAS(C1L26, GLOBAL(B1L321),  ,  ,  ,  ,  ,  ,  );
+
+
+--C1_Ball_Y_pos[4] is ball:inst|Ball_Y_pos[4] at LCFF_X19_Y35_N7
+C1_Ball_Y_pos[4] = DFFEAS(C1L95, GLOBAL(B1L321),  ,  ,  ,  ,  ,  ,  );
+
+
+--C1_Ball_Y_pos[3] is ball:inst|Ball_Y_pos[3] at LCFF_X19_Y35_N5
+C1_Ball_Y_pos[3] = DFFEAS(C1L65, GLOBAL(B1L321),  ,  ,  ,  ,  ,  ,  );
+
+
+--B1_pixel_row[2] is VGA_SYNC:1|pixel_row[2] at LCFF_X20_Y35_N19
+B1_pixel_row[2] = DFFEAS(UNCONNECTED_DATAIN, GLOBAL(E1L2),  ,  , B1L05, B1_v_count[2],  ,  , VCC);
+
+
+--C1_Ball_Y_pos[2] is ball:inst|Ball_Y_pos[2] at LCFF_X19_Y35_N3
+C1_Ball_Y_pos[2] = DFFEAS(C1L35, GLOBAL(B1L321),  ,  ,  ,  ,  ,  ,  );
+
+
+--B1_pixel_row[1] is VGA_SYNC:1|pixel_row[1] at LCFF_X20_Y35_N17
+B1_pixel_row[1] = DFFEAS(UNCONNECTED_DATAIN, GLOBAL(E1L2),  ,  , B1L05, B1_v_count[1],  ,  , VCC);
+
+
+--C1_Ball_Y_pos[1] is ball:inst|Ball_Y_pos[1] at LCFF_X19_Y35_N1
+C1_Ball_Y_pos[1] = DFFEAS(C1L05, GLOBAL(B1L321),  ,  ,  ,  ,  ,  ,  );
+
+
+--C1L77 is ball:inst|LessThan~710 at LCCOMB_X21_Y35_N0
+C1L77 = CARRY(C1_Ball_Y_pos[1] & !B1_pixel_row[1]);
+
+
+--C1L97 is ball:inst|LessThan~712 at LCCOMB_X21_Y35_N2
+C1L97 = CARRY(C1_Ball_Y_pos[2] & B1_pixel_row[2] & !C1L77 # !C1_Ball_Y_pos[2] & (B1_pixel_row[2] # !C1L77));
+
+
+--C1L18 is ball:inst|LessThan~714 at LCCOMB_X21_Y35_N4
+C1L18 = CARRY(C1_Ball_Y_pos[3] & (!C1L97 # !C1L1) # !C1_Ball_Y_pos[3] & !C1L1 & !C1L97);
+
+
+--C1L38 is ball:inst|LessThan~716 at LCCOMB_X21_Y35_N6
+C1L38 = CARRY(C1L3 & (!C1L18 # !C1_Ball_Y_pos[4]) # !C1L3 & !C1_Ball_Y_pos[4] & !C1L18);
+
+
+--C1L58 is ball:inst|LessThan~718 at LCCOMB_X21_Y35_N8
+C1L58 = CARRY(C1_Ball_Y_pos[5] & (!C1L38 # !C1L5) # !C1_Ball_Y_pos[5] & !C1L5 & !C1L38);
+
+
+--C1L78 is ball:inst|LessThan~720 at LCCOMB_X21_Y35_N10
+C1L78 = CARRY(C1L7 & (!C1L58 # !C1_Ball_Y_pos[6]) # !C1L7 & !C1_Ball_Y_pos[6] & !C1L58);
+
+
+--C1L98 is ball:inst|LessThan~722 at LCCOMB_X21_Y35_N12
+C1L98 = CARRY(C1_Ball_Y_pos[7] & (!C1L78 # !C1L9) # !C1_Ball_Y_pos[7] & !C1L9 & !C1L78);
+
+
+--C1L19 is ball:inst|LessThan~724 at LCCOMB_X21_Y35_N14
+C1L19 = CARRY(C1_Ball_Y_pos[8] & C1L11 & !C1L98 # !C1_Ball_Y_pos[8] & (C1L11 # !C1L98));
+
+
+--C1L29 is ball:inst|LessThan~725 at LCCOMB_X21_Y35_N16
+C1L29 = C1_Ball_Y_pos[9] & (!C1L31 # !C1L19) # !C1_Ball_Y_pos[9] & !C1L19 & !C1L31;
+
+
+--B1_pixel_column[9] is VGA_SYNC:1|pixel_column[9] at LCFF_X19_Y34_N25
+B1_pixel_column[9] = DFFEAS(UNCONNECTED_DATAIN, GLOBAL(E1L2),  ,  , B1L74, B1_h_count[9],  ,  , VCC);
+
+
+--B1_pixel_column[6] is VGA_SYNC:1|pixel_column[6] at LCFF_X19_Y34_N19
+B1_pixel_column[6] = DFFEAS(UNCONNECTED_DATAIN, GLOBAL(E1L2),  ,  , B1L74, B1_h_count[6],  ,  , VCC);
+
+
+--B1_pixel_column[5] is VGA_SYNC:1|pixel_column[5] at LCFF_X19_Y34_N17
+B1_pixel_column[5] = DFFEAS(UNCONNECTED_DATAIN, GLOBAL(E1L2),  ,  , B1L74, B1_h_count[5],  ,  , VCC);
+
+
+--B1_pixel_column[4] is VGA_SYNC:1|pixel_column[4] at LCFF_X19_Y34_N15
+B1_pixel_column[4] = DFFEAS(UNCONNECTED_DATAIN, GLOBAL(E1L2),  ,  , B1L74, B1_h_count[4],  ,  , VCC);
+
+
+--B1_pixel_column[3] is VGA_SYNC:1|pixel_column[3] at LCFF_X19_Y34_N13
+B1_pixel_column[3] = DFFEAS(UNCONNECTED_DATAIN, GLOBAL(E1L2),  ,  , B1L74, B1_h_count[3],  ,  , VCC);
+
+
+--C1L61 is ball:inst|add~800 at LCCOMB_X19_Y34_N12
+C1L61 = CARRY(B1_pixel_column[3]);
+
+
+--C1L81 is ball:inst|add~802 at LCCOMB_X19_Y34_N14
+C1L81 = CARRY(!C1L61 # !B1_pixel_column[4]);
+
+
+--C1L02 is ball:inst|add~804 at LCCOMB_X19_Y34_N16
+C1L02 = CARRY(B1_pixel_column[5] & !C1L81);
+
+
+--C1L12 is ball:inst|add~805 at LCCOMB_X19_Y34_N18
+C1L12 = B1_pixel_column[6] & !C1L02 # !B1_pixel_column[6] & (C1L02 # GND);
+
+--C1L22 is ball:inst|add~806 at LCCOMB_X19_Y34_N18
+C1L22 = CARRY(!C1L02 # !B1_pixel_column[6]);
+
+
+--B1_pixel_column[7] is VGA_SYNC:1|pixel_column[7] at LCFF_X19_Y34_N21
+B1_pixel_column[7] = DFFEAS(UNCONNECTED_DATAIN, GLOBAL(E1L2),  ,  , B1L74, B1_h_count[7],  ,  , VCC);
+
+
+--C1L32 is ball:inst|add~807 at LCCOMB_X19_Y34_N20
+C1L32 = B1_pixel_column[7] & (C1L22 $ GND) # !B1_pixel_column[7] & !C1L22 & VCC;
+
+--C1L42 is ball:inst|add~808 at LCCOMB_X19_Y34_N20
+C1L42 = CARRY(B1_pixel_column[7] & !C1L22);
+
+
+--B1_pixel_column[8] is VGA_SYNC:1|pixel_column[8] at LCFF_X19_Y34_N23
+B1_pixel_column[8] = DFFEAS(UNCONNECTED_DATAIN, GLOBAL(E1L2),  ,  , B1L74, B1_h_count[8],  ,  , VCC);
+
+
+--C1L52 is ball:inst|add~809 at LCCOMB_X19_Y34_N22
+C1L52 = B1_pixel_column[8] & !C1L42 # !B1_pixel_column[8] & (C1L42 # GND);
+
+--C1L62 is ball:inst|add~810 at LCCOMB_X19_Y34_N22
+C1L62 = CARRY(!C1L42 # !B1_pixel_column[8]);
+
+
+--C1L72 is ball:inst|add~811 at LCCOMB_X19_Y34_N24
+C1L72 = B1_pixel_column[9] $ !C1L62;
+
+
+--B1L22 is VGA_SYNC:1|green_out~147 at LCCOMB_X20_Y35_N4
+B1L22 = !C1L72 & (!C1L12 & !C1L32 # !C1L52);
+
+
+--C1L92 is ball:inst|add~813 at LCCOMB_X19_Y35_N18
+C1L92 = C1_Ball_Y_pos[3] $ VCC;
+
+--C1L03 is ball:inst|add~814 at LCCOMB_X19_Y35_N18
+C1L03 = CARRY(C1_Ball_Y_pos[3]);
+
+
+--C1L13 is ball:inst|add~815 at LCCOMB_X19_Y35_N20
+C1L13 = C1_Ball_Y_pos[4] & !C1L03 # !C1_Ball_Y_pos[4] & (C1L03 # GND);
+
+--C1L23 is ball:inst|add~816 at LCCOMB_X19_Y35_N20
+C1L23 = CARRY(!C1L03 # !C1_Ball_Y_pos[4]);
+
+
+--C1L33 is ball:inst|add~817 at LCCOMB_X19_Y35_N22
+C1L33 = C1_Ball_Y_pos[5] & (C1L23 $ GND) # !C1_Ball_Y_pos[5] & !C1L23 & VCC;
+
+--C1L43 is ball:inst|add~818 at LCCOMB_X19_Y35_N22
+C1L43 = CARRY(C1_Ball_Y_pos[5] & !C1L23);
+
+
+--C1L53 is ball:inst|add~819 at LCCOMB_X19_Y35_N24
+C1L53 = C1_Ball_Y_pos[6] & !C1L43 # !C1_Ball_Y_pos[6] & (C1L43 # GND);
+
+--C1L63 is ball:inst|add~820 at LCCOMB_X19_Y35_N24
+C1L63 = CARRY(!C1L43 # !C1_Ball_Y_pos[6]);
+
+
+--C1L73 is ball:inst|add~821 at LCCOMB_X19_Y35_N26
+C1L73 = C1_Ball_Y_pos[7] & (C1L63 $ GND) # !C1_Ball_Y_pos[7] & !C1L63 & VCC;
+
+--C1L83 is ball:inst|add~822 at LCCOMB_X19_Y35_N26
+C1L83 = CARRY(C1_Ball_Y_pos[7] & !C1L63);
+
+
+--C1L93 is ball:inst|add~823 at LCCOMB_X19_Y35_N28
+C1L93 = C1_Ball_Y_pos[8] & !C1L83 # !C1_Ball_Y_pos[8] & (C1L83 # GND);
+
+--C1L04 is ball:inst|add~824 at LCCOMB_X19_Y35_N28
+C1L04 = CARRY(!C1L83 # !C1_Ball_Y_pos[8]);
+
+
+--B1_pixel_row[0] is VGA_SYNC:1|pixel_row[0] at LCFF_X20_Y35_N15
+B1_pixel_row[0] = DFFEAS(UNCONNECTED_DATAIN, GLOBAL(E1L2),  ,  , B1L05, B1_v_count[0],  ,  , VCC);
+
+
+--C1L59 is ball:inst|LessThan~728 at LCCOMB_X20_Y35_N14
+C1L59 = CARRY(B1_pixel_row[0]);
+
+
+--C1L79 is ball:inst|LessThan~730 at LCCOMB_X20_Y35_N16
+C1L79 = CARRY(B1_pixel_row[1] & C1_Ball_Y_pos[1] & !C1L59 # !B1_pixel_row[1] & (C1_Ball_Y_pos[1] # !C1L59));
+
+
+--C1L99 is ball:inst|LessThan~732 at LCCOMB_X20_Y35_N18
+C1L99 = CARRY(C1_Ball_Y_pos[2] & B1_pixel_row[2] & !C1L79 # !C1_Ball_Y_pos[2] & (B1_pixel_row[2] # !C1L79));
+
+
+--C1L101 is ball:inst|LessThan~734 at LCCOMB_X20_Y35_N20
+C1L101 = CARRY(C1L92 & (!C1L99 # !B1_pixel_row[3]) # !C1L92 & !B1_pixel_row[3] & !C1L99);
+
+
+--C1L301 is ball:inst|LessThan~736 at LCCOMB_X20_Y35_N22
+C1L301 = CARRY(C1L13 & B1_pixel_row[4] & !C1L101 # !C1L13 & (B1_pixel_row[4] # !C1L101));
+
+
+--C1L501 is ball:inst|LessThan~738 at LCCOMB_X20_Y35_N24
+C1L501 = CARRY(B1_pixel_row[5] & C1L33 & !C1L301 # !B1_pixel_row[5] & (C1L33 # !C1L301));
+
+
+--C1L701 is ball:inst|LessThan~740 at LCCOMB_X20_Y35_N26
+C1L701 = CARRY(C1L53 & B1_pixel_row[6] & !C1L501 # !C1L53 & (B1_pixel_row[6] # !C1L501));
+
+
+--C1L901 is ball:inst|LessThan~742 at LCCOMB_X20_Y35_N28
+C1L901 = CARRY(B1_pixel_row[7] & C1L73 & !C1L701 # !B1_pixel_row[7] & (C1L73 # !C1L701));
+
+
+--C1L011 is ball:inst|LessThan~743 at LCCOMB_X20_Y35_N30
+C1L011 = C1L93 & !C1L901 & B1_pixel_row[8] # !C1L93 & (B1_pixel_row[8] # !C1L901);
+
+
+--C1L14 is ball:inst|add~825 at LCCOMB_X19_Y35_N30
+C1L14 = C1_Ball_Y_pos[9] $ !C1L04;
+
+
+--B1L32 is VGA_SYNC:1|green_out~148 at LCCOMB_X20_Y35_N8
+B1L32 = !C1L14 & C1L011;
+
+
+--B1L42 is VGA_SYNC:1|green_out~149 at LCCOMB_X20_Y35_N0
+B1L42 = C1L29 # B1L32 # B1L22 # B1_pixel_column[9];
+
+
+--B1_pixel_column[2] is VGA_SYNC:1|pixel_column[2] at LCFF_X19_Y34_N29
+B1_pixel_column[2] = DFFEAS(UNCONNECTED_DATAIN, GLOBAL(E1L2),  ,  , B1L74, B1_h_count[2],  ,  , VCC);
+
+
+--B1_pixel_column[1] is VGA_SYNC:1|pixel_column[1] at LCFF_X19_Y34_N11
+B1_pixel_column[1] = DFFEAS(B1L85, GLOBAL(E1L2),  ,  , B1L74,  ,  ,  ,  );
+
+
+--B1_pixel_column[0] is VGA_SYNC:1|pixel_column[0] at LCFF_X19_Y34_N3
+B1_pixel_column[0] = DFFEAS(UNCONNECTED_DATAIN, GLOBAL(E1L2),  ,  , B1L74, B1_h_count[0],  ,  , VCC);
+
+
+--B1L52 is VGA_SYNC:1|green_out~150 at LCCOMB_X19_Y34_N28
+B1L52 = B1_pixel_column[3] & (B1_pixel_column[1] # B1_pixel_column[0] # B1_pixel_column[2]);
+
+
+--B1L62 is VGA_SYNC:1|green_out~151 at LCCOMB_X19_Y34_N6
+B1L62 = B1_pixel_column[4] # B1_pixel_column[5];
+
+
+--B1L72 is VGA_SYNC:1|green_out~152 at LCCOMB_X19_Y34_N0
+B1L72 = B1_pixel_column[7] # B1_pixel_column[6] & (B1L62 # B1L52);
+
+
+--B1L82 is VGA_SYNC:1|green_out~153 at LCCOMB_X20_Y35_N2
+B1L82 = B1L721 & (B1L42 # B1L72 & B1_pixel_column[8]);
+
+
+--B1_horiz_sync is VGA_SYNC:1|horiz_sync at LCFF_X17_Y34_N1
+B1_horiz_sync = DFFEAS(B1L08, GLOBAL(E1L2),  ,  ,  ,  ,  ,  ,  );
+
+
+--B1_vert_sync is VGA_SYNC:1|vert_sync at LCFF_X21_Y34_N11
+B1_vert_sync = DFFEAS(B1L28, GLOBAL(E1L2),  ,  ,  ,  ,  ,  ,  );
+
+
+--B1_h_count[9] is VGA_SYNC:1|h_count[9] at LCFF_X19_Y34_N31
+B1_h_count[9] = DFFEAS(B1L04, GLOBAL(E1L2),  ,  ,  ,  ,  ,  ,  );
+
+
+--B1_h_count[8] is VGA_SYNC:1|h_count[8] at LCFF_X19_Y34_N5
+B1_h_count[8] = DFFEAS(B1L14, GLOBAL(E1L2),  ,  ,  ,  ,  ,  ,  );
+
+
+--B1_h_count[7] is VGA_SYNC:1|h_count[7] at LCFF_X18_Y34_N25
+B1_h_count[7] = DFFEAS(B1L51, GLOBAL(E1L2),  ,  ,  ,  ,  ,  ,  );
+
+
+--B1L74 is VGA_SYNC:1|LessThan~707 at LCCOMB_X19_Y34_N8
+B1L74 = !B1_h_count[7] & !B1_h_count[8] # !B1_h_count[9];
+
+
+--B1_v_count[9] is VGA_SYNC:1|v_count[9] at LCFF_X20_Y34_N21
+B1_v_count[9] = DFFEAS(B1L911, GLOBAL(E1L2),  ,  ,  ,  ,  , B1L48,  );
+
+
+--B1_v_count[5] is VGA_SYNC:1|v_count[5] at LCFF_X20_Y34_N13
+B1_v_count[5] = DFFEAS(B1L701, GLOBAL(E1L2),  ,  ,  ,  ,  , B1L48,  );
+
+
+--B1_v_count[6] is VGA_SYNC:1|v_count[6] at LCFF_X20_Y34_N15
+B1_v_count[6] = DFFEAS(B1L011, GLOBAL(E1L2),  ,  ,  ,  ,  , B1L48,  );
+
+
+--B1_v_count[7] is VGA_SYNC:1|v_count[7] at LCFF_X20_Y34_N17
+B1_v_count[7] = DFFEAS(B1L311, GLOBAL(E1L2),  ,  ,  ,  ,  , B1L48,  );
+
+
+--B1_v_count[8] is VGA_SYNC:1|v_count[8] at LCFF_X20_Y34_N19
+B1_v_count[8] = DFFEAS(B1L611, GLOBAL(E1L2),  ,  ,  ,  ,  , B1L48,  );
+
+
+--B1L84 is VGA_SYNC:1|LessThan~708 at LCCOMB_X21_Y34_N26
+B1L84 = B1_v_count[5] & B1_v_count[6] & B1_v_count[8] & B1_v_count[7];
+
+
+--B1_v_count[4] is VGA_SYNC:1|v_count[4] at LCFF_X20_Y34_N11
+B1_v_count[4] = DFFEAS(B1L401, GLOBAL(E1L2),  ,  ,  ,  ,  , B1L48,  );
+
+
+--B1_v_count[0] is VGA_SYNC:1|v_count[0] at LCFF_X20_Y34_N3
+B1_v_count[0] = DFFEAS(B1L29, GLOBAL(E1L2),  ,  ,  ,  ,  , B1L48,  );
+
+
+--B1_v_count[1] is VGA_SYNC:1|v_count[1] at LCFF_X20_Y34_N5
+B1_v_count[1] = DFFEAS(B1L59, GLOBAL(E1L2),  ,  ,  ,  ,  , B1L48,  );
+
+
+--B1_v_count[2] is VGA_SYNC:1|v_count[2] at LCFF_X20_Y34_N7
+B1_v_count[2] = DFFEAS(B1L89, GLOBAL(E1L2),  ,  ,  ,  ,  , B1L48,  );
+
+
+--B1_v_count[3] is VGA_SYNC:1|v_count[3] at LCFF_X20_Y34_N9
+B1_v_count[3] = DFFEAS(B1L101, GLOBAL(E1L2),  ,  ,  ,  ,  , B1L48,  );
+
+
+--B1L94 is VGA_SYNC:1|LessThan~709 at LCCOMB_X20_Y35_N10
+B1L94 = B1_v_count[2] # B1_v_count[1] # B1_v_count[0] # B1_v_count[3];
+
+
+--B1L05 is VGA_SYNC:1|LessThan~710 at LCCOMB_X21_Y34_N12
+B1L05 = !B1_v_count[9] & (!B1L94 & !B1_v_count[4] # !B1L84);
+
+
+--C1_Ball_Y_motion[8] is ball:inst|Ball_Y_motion[8] at LCFF_X22_Y35_N21
+C1_Ball_Y_motion[8] = DFFEAS(C1L411, GLOBAL(B1L321),  ,  , C1L64,  ,  ,  ,  );
+
+
+--C1L05 is ball:inst|Ball_Y_pos[1]~132 at LCCOMB_X19_Y35_N0
+C1L05 = C1_Ball_Y_pos[1] $ VCC;
+
+--C1L15 is ball:inst|Ball_Y_pos[1]~133 at LCCOMB_X19_Y35_N0
+C1L15 = CARRY(C1_Ball_Y_pos[1]);
+
+
+--C1L35 is ball:inst|Ball_Y_pos[2]~134 at LCCOMB_X19_Y35_N2
+C1L35 = C1_Ball_Y_pos[2] & (C1_Ball_Y_motion[8] & C1L15 & VCC # !C1_Ball_Y_motion[8] & !C1L15) # !C1_Ball_Y_pos[2] & (C1_Ball_Y_motion[8] & !C1L15 # !C1_Ball_Y_motion[8] & (C1L15 # GND));
+
+--C1L45 is ball:inst|Ball_Y_pos[2]~135 at LCCOMB_X19_Y35_N2
+C1L45 = CARRY(C1_Ball_Y_pos[2] & !C1_Ball_Y_motion[8] & !C1L15 # !C1_Ball_Y_pos[2] & (!C1L15 # !C1_Ball_Y_motion[8]));
+
+
+--C1L65 is ball:inst|Ball_Y_pos[3]~136 at LCCOMB_X19_Y35_N4
+C1L65 = (C1_Ball_Y_motion[8] $ C1_Ball_Y_pos[3] $ !C1L45) # GND;
+
+--C1L75 is ball:inst|Ball_Y_pos[3]~137 at LCCOMB_X19_Y35_N4
+C1L75 = CARRY(C1_Ball_Y_motion[8] & (C1_Ball_Y_pos[3] # !C1L45) # !C1_Ball_Y_motion[8] & C1_Ball_Y_pos[3] & !C1L45);
+
+
+--C1L95 is ball:inst|Ball_Y_pos[4]~138 at LCCOMB_X19_Y35_N6
+C1L95 = C1_Ball_Y_pos[4] & (C1_Ball_Y_motion[8] & C1L75 & VCC # !C1_Ball_Y_motion[8] & !C1L75) # !C1_Ball_Y_pos[4] & (C1_Ball_Y_motion[8] & !C1L75 # !C1_Ball_Y_motion[8] & (C1L75 # GND));
+
+--C1L06 is ball:inst|Ball_Y_pos[4]~139 at LCCOMB_X19_Y35_N6
+C1L06 = CARRY(C1_Ball_Y_pos[4] & !C1_Ball_Y_motion[8] & !C1L75 # !C1_Ball_Y_pos[4] & (!C1L75 # !C1_Ball_Y_motion[8]));
+
+
+--C1L26 is ball:inst|Ball_Y_pos[5]~140 at LCCOMB_X19_Y35_N8
+C1L26 = (C1_Ball_Y_pos[5] $ C1_Ball_Y_motion[8] $ !C1L06) # GND;
+
+--C1L36 is ball:inst|Ball_Y_pos[5]~141 at LCCOMB_X19_Y35_N8
+C1L36 = CARRY(C1_Ball_Y_pos[5] & (C1_Ball_Y_motion[8] # !C1L06) # !C1_Ball_Y_pos[5] & C1_Ball_Y_motion[8] & !C1L06);
+
+
+--C1L56 is ball:inst|Ball_Y_pos[6]~142 at LCCOMB_X19_Y35_N10
+C1L56 = C1_Ball_Y_pos[6] & (C1_Ball_Y_motion[8] & C1L36 & VCC # !C1_Ball_Y_motion[8] & !C1L36) # !C1_Ball_Y_pos[6] & (C1_Ball_Y_motion[8] & !C1L36 # !C1_Ball_Y_motion[8] & (C1L36 # GND));
+
+--C1L66 is ball:inst|Ball_Y_pos[6]~143 at LCCOMB_X19_Y35_N10
+C1L66 = CARRY(C1_Ball_Y_pos[6] & !C1_Ball_Y_motion[8] & !C1L36 # !C1_Ball_Y_pos[6] & (!C1L36 # !C1_Ball_Y_motion[8]));
+
+
+--C1L86 is ball:inst|Ball_Y_pos[7]~144 at LCCOMB_X19_Y35_N12
+C1L86 = (C1_Ball_Y_pos[7] $ C1_Ball_Y_motion[8] $ !C1L66) # GND;
+
+--C1L96 is ball:inst|Ball_Y_pos[7]~145 at LCCOMB_X19_Y35_N12
+C1L96 = CARRY(C1_Ball_Y_pos[7] & (C1_Ball_Y_motion[8] # !C1L66) # !C1_Ball_Y_pos[7] & C1_Ball_Y_motion[8] & !C1L66);
+
+
+--C1L17 is ball:inst|Ball_Y_pos[8]~146 at LCCOMB_X19_Y35_N14
+C1L17 = C1_Ball_Y_motion[8] & (C1_Ball_Y_pos[8] & C1L96 & VCC # !C1_Ball_Y_pos[8] & !C1L96) # !C1_Ball_Y_motion[8] & (C1_Ball_Y_pos[8] & !C1L96 # !C1_Ball_Y_pos[8] & (C1L96 # GND));
+
+--C1L27 is ball:inst|Ball_Y_pos[8]~147 at LCCOMB_X19_Y35_N14
+C1L27 = CARRY(C1_Ball_Y_motion[8] & !C1_Ball_Y_pos[8] & !C1L96 # !C1_Ball_Y_motion[8] & (!C1L96 # !C1_Ball_Y_pos[8]));
+
+
+--C1L47 is ball:inst|Ball_Y_pos[9]~148 at LCCOMB_X19_Y35_N16
+C1L47 = C1_Ball_Y_pos[9] $ C1L27 $ !C1_Ball_Y_motion[8];
+
+
+--B1_h_count[6] is VGA_SYNC:1|h_count[6] at LCFF_X18_Y34_N23
+B1_h_count[6] = DFFEAS(B1L31, GLOBAL(E1L2),  ,  ,  ,  ,  ,  ,  );
+
+
+--B1_h_count[5] is VGA_SYNC:1|h_count[5] at LCFF_X18_Y34_N5
+B1_h_count[5] = DFFEAS(B1L24, GLOBAL(E1L2),  ,  ,  ,  ,  ,  ,  );
+
+
+--B1_h_count[4] is VGA_SYNC:1|h_count[4] at LCFF_X18_Y34_N19
+B1_h_count[4] = DFFEAS(B1L9, GLOBAL(E1L2),  ,  ,  ,  ,  ,  ,  );
+
+
+--B1_h_count[3] is VGA_SYNC:1|h_count[3] at LCFF_X18_Y34_N17
+B1_h_count[3] = DFFEAS(B1L7, GLOBAL(E1L2),  ,  ,  ,  ,  ,  ,  );
+
+
+--B1_h_count[2] is VGA_SYNC:1|h_count[2] at LCFF_X18_Y34_N15
+B1_h_count[2] = DFFEAS(B1L5, GLOBAL(E1L2),  ,  ,  ,  ,  ,  ,  );
+
+
+--B1_h_count[1] is VGA_SYNC:1|h_count[1] at LCFF_X18_Y34_N13
+B1_h_count[1] = DFFEAS(B1L3, GLOBAL(E1L2),  ,  ,  ,  ,  ,  ,  );
+
+
+--B1_h_count[0] is VGA_SYNC:1|h_count[0] at LCFF_X18_Y34_N1
+B1_h_count[0] = DFFEAS(B1L34, GLOBAL(E1L2),  ,  ,  ,  ,  ,  ,  );
+
+
+--B1L77 is VGA_SYNC:1|process0~359 at LCCOMB_X18_Y34_N2
+B1L77 = B1_h_count[3] & B1_h_count[4];
+
+
+--B1L15 is VGA_SYNC:1|LessThan~711 at LCCOMB_X20_Y34_N22
+B1L15 = !B1_h_count[2] & !B1_h_count[0] & !B1_h_count[1];
+
+
+--B1L87 is VGA_SYNC:1|process0~360 at LCCOMB_X17_Y34_N6
+B1L87 = B1L77 & B1_h_count[5] & !B1L15 & B1_h_count[6];
+
+
+--B1L97 is VGA_SYNC:1|process0~361 at LCCOMB_X18_Y34_N30
+B1L97 = !B1_h_count[6] & !B1_h_count[5] & (!B1_h_count[4] # !B1_h_count[3]);
+
+
+--B1L68 is VGA_SYNC:1|reduce_nor~61 at LCCOMB_X18_Y34_N8
+B1L68 = B1_h_count[7] & !B1_h_count[8];
+
+
+--B1L08 is VGA_SYNC:1|process0~362 at LCCOMB_X17_Y34_N0
+B1L08 = B1L97 # B1L87 # !B1L68 # !B1_h_count[9];
+
+
+--B1L18 is VGA_SYNC:1|process0~363 at LCCOMB_X21_Y34_N4
+B1L18 = B1_v_count[9] # B1_v_count[1] & (B1_v_count[2] # !B1_v_count[0]) # !B1_v_count[1] & !B1_v_count[2];
+
+
+--B1L28 is VGA_SYNC:1|process0~364 at LCCOMB_X21_Y34_N10
+B1L28 = B1_v_count[4] # B1L18 # !B1_v_count[3] # !B1L84;
+
+
+--B1L1 is VGA_SYNC:1|add~317 at LCCOMB_X18_Y34_N10
+B1L1 = B1_h_count[0] $ VCC;
+
+--B1L2 is VGA_SYNC:1|add~318 at LCCOMB_X18_Y34_N10
+B1L2 = CARRY(B1_h_count[0]);
+
+
+--B1L3 is VGA_SYNC:1|add~319 at LCCOMB_X18_Y34_N12
+B1L3 = B1_h_count[1] & !B1L2 # !B1_h_count[1] & (B1L2 # GND);
+
+--B1L4 is VGA_SYNC:1|add~320 at LCCOMB_X18_Y34_N12
+B1L4 = CARRY(!B1L2 # !B1_h_count[1]);
+
+
+--B1L5 is VGA_SYNC:1|add~321 at LCCOMB_X18_Y34_N14
+B1L5 = B1_h_count[2] & (B1L4 $ GND) # !B1_h_count[2] & !B1L4 & VCC;
+
+--B1L6 is VGA_SYNC:1|add~322 at LCCOMB_X18_Y34_N14
+B1L6 = CARRY(B1_h_count[2] & !B1L4);
+
+
+--B1L7 is VGA_SYNC:1|add~323 at LCCOMB_X18_Y34_N16
+B1L7 = B1_h_count[3] & !B1L6 # !B1_h_count[3] & (B1L6 # GND);
+
+--B1L8 is VGA_SYNC:1|add~324 at LCCOMB_X18_Y34_N16
+B1L8 = CARRY(!B1L6 # !B1_h_count[3]);
+
+
+--B1L9 is VGA_SYNC:1|add~325 at LCCOMB_X18_Y34_N18
+B1L9 = B1_h_count[4] & (B1L8 $ GND) # !B1_h_count[4] & !B1L8 & VCC;
+
+--B1L01 is VGA_SYNC:1|add~326 at LCCOMB_X18_Y34_N18
+B1L01 = CARRY(B1_h_count[4] & !B1L8);
+
+
+--B1L11 is VGA_SYNC:1|add~327 at LCCOMB_X18_Y34_N20
+B1L11 = B1_h_count[5] & !B1L01 # !B1_h_count[5] & (B1L01 # GND);
+
+--B1L21 is VGA_SYNC:1|add~328 at LCCOMB_X18_Y34_N20
+B1L21 = CARRY(!B1L01 # !B1_h_count[5]);
+
+
+--B1L31 is VGA_SYNC:1|add~329 at LCCOMB_X18_Y34_N22
+B1L31 = B1_h_count[6] & (B1L21 $ GND) # !B1_h_count[6] & !B1L21 & VCC;
+
+--B1L41 is VGA_SYNC:1|add~330 at LCCOMB_X18_Y34_N22
+B1L41 = CARRY(B1_h_count[6] & !B1L21);
+
+
+--B1L51 is VGA_SYNC:1|add~331 at LCCOMB_X18_Y34_N24
+B1L51 = B1_h_count[7] & !B1L41 # !B1_h_count[7] & (B1L41 # GND);
+
+--B1L61 is VGA_SYNC:1|add~332 at LCCOMB_X18_Y34_N24
+B1L61 = CARRY(!B1L41 # !B1_h_count[7]);
+
+
+--B1L71 is VGA_SYNC:1|add~333 at LCCOMB_X18_Y34_N26
+B1L71 = B1_h_count[8] & (B1L61 $ GND) # !B1_h_count[8] & !B1L61 & VCC;
+
+--B1L81 is VGA_SYNC:1|add~334 at LCCOMB_X18_Y34_N26
+B1L81 = CARRY(B1_h_count[8] & !B1L61);
+
+
+--B1L91 is VGA_SYNC:1|add~335 at LCCOMB_X18_Y34_N28
+B1L91 = B1L81 $ B1_h_count[9];
+
+
+--B1L78 is VGA_SYNC:1|reduce_nor~62 at LCCOMB_X18_Y34_N6
+B1L78 = B1_h_count[7] # B1_h_count[4] # !B1_h_count[5] # !B1_h_count[8];
+
+
+--B1L88 is VGA_SYNC:1|reduce_nor~63 at LCCOMB_X20_Y34_N0
+B1L88 = !B1_h_count[6] & B1L15 & B1_h_count[9];
+
+
+--B1L04 is VGA_SYNC:1|h_count~418 at LCCOMB_X19_Y34_N30
+B1L04 = B1L91 & (B1_h_count[3] # B1L78 # !B1L88);
+
+
+--B1L14 is VGA_SYNC:1|h_count~419 at LCCOMB_X19_Y34_N4
+B1L14 = B1L71 & (B1_h_count[3] # B1L78 # !B1L88);
+
+
+--B1L98 is VGA_SYNC:1|reduce_nor~64 at LCCOMB_X20_Y34_N24
+B1L98 = B1_h_count[5] # !B1L68 # !B1L88 # !B1L77;
+
+
+--B1L29 is VGA_SYNC:1|v_count[0]~253 at LCCOMB_X20_Y34_N2
+B1L29 = B1L98 & B1_v_count[0] & VCC # !B1L98 & (B1_v_count[0] $ VCC);
+
+--B1L39 is VGA_SYNC:1|v_count[0]~254 at LCCOMB_X20_Y34_N2
+B1L39 = CARRY(!B1L98 & B1_v_count[0]);
+
+
+--B1L59 is VGA_SYNC:1|v_count[1]~255 at LCCOMB_X20_Y34_N4
+B1L59 = B1_v_count[1] & !B1L39 # !B1_v_count[1] & (B1L39 # GND);
+
+--B1L69 is VGA_SYNC:1|v_count[1]~256 at LCCOMB_X20_Y34_N4
+B1L69 = CARRY(!B1L39 # !B1_v_count[1]);
+
+
+--B1L89 is VGA_SYNC:1|v_count[2]~257 at LCCOMB_X20_Y34_N6
+B1L89 = B1_v_count[2] & (B1L69 $ GND) # !B1_v_count[2] & !B1L69 & VCC;
+
+--B1L99 is VGA_SYNC:1|v_count[2]~258 at LCCOMB_X20_Y34_N6
+B1L99 = CARRY(B1_v_count[2] & !B1L69);
+
+
+--B1L101 is VGA_SYNC:1|v_count[3]~259 at LCCOMB_X20_Y34_N8
+B1L101 = B1_v_count[3] & !B1L99 # !B1_v_count[3] & (B1L99 # GND);
+
+--B1L201 is VGA_SYNC:1|v_count[3]~260 at LCCOMB_X20_Y34_N8
+B1L201 = CARRY(!B1L99 # !B1_v_count[3]);
+
+
+--B1L401 is VGA_SYNC:1|v_count[4]~261 at LCCOMB_X20_Y34_N10
+B1L401 = B1_v_count[4] & (B1L201 $ GND) # !B1_v_count[4] & !B1L201 & VCC;
+
+--B1L501 is VGA_SYNC:1|v_count[4]~262 at LCCOMB_X20_Y34_N10
+B1L501 = CARRY(B1_v_count[4] & !B1L201);
+
+
+--B1L701 is VGA_SYNC:1|v_count[5]~263 at LCCOMB_X20_Y34_N12
+B1L701 = B1_v_count[5] & !B1L501 # !B1_v_count[5] & (B1L501 # GND);
+
+--B1L801 is VGA_SYNC:1|v_count[5]~264 at LCCOMB_X20_Y34_N12
+B1L801 = CARRY(!B1L501 # !B1_v_count[5]);
+
+
+--B1L011 is VGA_SYNC:1|v_count[6]~265 at LCCOMB_X20_Y34_N14
+B1L011 = B1_v_count[6] & (B1L801 $ GND) # !B1_v_count[6] & !B1L801 & VCC;
+
+--B1L111 is VGA_SYNC:1|v_count[6]~266 at LCCOMB_X20_Y34_N14
+B1L111 = CARRY(B1_v_count[6] & !B1L801);
+
+
+--B1L311 is VGA_SYNC:1|v_count[7]~267 at LCCOMB_X20_Y34_N16
+B1L311 = B1_v_count[7] & !B1L111 # !B1_v_count[7] & (B1L111 # GND);
+
+--B1L411 is VGA_SYNC:1|v_count[7]~268 at LCCOMB_X20_Y34_N16
+B1L411 = CARRY(!B1L111 # !B1_v_count[7]);
+
+
+--B1L611 is VGA_SYNC:1|v_count[8]~269 at LCCOMB_X20_Y34_N18
+B1L611 = B1_v_count[8] & (B1L411 $ GND) # !B1_v_count[8] & !B1L411 & VCC;
+
+--B1L711 is VGA_SYNC:1|v_count[8]~270 at LCCOMB_X20_Y34_N18
+B1L711 = CARRY(B1_v_count[8] & !B1L411);
+
+
+--B1L911 is VGA_SYNC:1|v_count[9]~271 at LCCOMB_X20_Y34_N20
+B1L911 = B1_v_count[9] $ B1L711;
+
+
+--B1L25 is VGA_SYNC:1|LessThan~712 at LCCOMB_X20_Y35_N6
+B1L25 = !B1_v_count[0] & !B1_v_count[1] # !B1_v_count[3] # !B1_v_count[2];
+
+
+--B1L35 is VGA_SYNC:1|LessThan~713 at LCCOMB_X20_Y34_N26
+B1L35 = !B1_v_count[5] & !B1_v_count[6] & !B1_v_count[7] & !B1_v_count[4];
+
+
+--B1L45 is VGA_SYNC:1|LessThan~714 at LCCOMB_X20_Y34_N28
+B1L45 = B1L35 & B1L25 & !B1_v_count[8];
+
+
+--B1L38 is VGA_SYNC:1|process0~365 at LCCOMB_X19_Y34_N26
+B1L38 = !B1_h_count[7] & !B1_h_count[8] # !B1_h_count[9] # !B1_v_count[9];
+
+
+--B1L48 is VGA_SYNC:1|process0~366 at LCCOMB_X20_Y34_N30
+B1L48 = !B1L38 & !B1L45 & (B1_h_count[8] # !B1L97);
+
+
+--C1L211 is ball:inst|LessThan~745 at LCCOMB_X22_Y35_N0
+C1L211 = !C1_Ball_Y_pos[4] # !C1_Ball_Y_pos[3];
+
+
+--C1L311 is ball:inst|LessThan~746 at LCCOMB_X22_Y35_N10
+C1L311 = !C1_Ball_Y_pos[5] & C1L211 # !C1_Ball_Y_pos[6] # !C1_Ball_Y_pos[7];
+
+
+--C1L411 is ball:inst|LessThan~747 at LCCOMB_X22_Y35_N20
+C1L411 = C1_Ball_Y_pos[9] # !C1L311 & C1_Ball_Y_pos[8];
+
+
+--C1L44 is ball:inst|Ball_Y_motion[1]~283 at LCCOMB_X22_Y35_N6
+C1L44 = C1_Ball_Y_pos[7] # C1_Ball_Y_pos[3] & (C1_Ball_Y_pos[2] # C1_Ball_Y_pos[1]);
+
+
+--C1L54 is ball:inst|Ball_Y_motion[1]~284 at LCCOMB_X22_Y35_N30
+C1L54 = C1_Ball_Y_pos[4] # C1_Ball_Y_pos[6] # C1_Ball_Y_pos[5] # C1L44;
+
+
+--C1L64 is ball:inst|Ball_Y_motion[1]~285 at LCCOMB_X22_Y35_N22
+C1L64 = C1_Ball_Y_pos[9] # C1_Ball_Y_pos[8] & !C1L311 # !C1_Ball_Y_pos[8] & (!C1L54);
+
+
+--B1L24 is VGA_SYNC:1|h_count~420 at LCCOMB_X18_Y34_N4
+B1L24 = B1L11 & (B1_h_count[3] # B1L78 # !B1L88);
+
+
+--B1L34 is VGA_SYNC:1|h_count~421 at LCCOMB_X18_Y34_N0
+B1L34 = B1L1 & (B1L78 # B1_h_count[3] # !B1L88);
+
+
+--Clock_50Mhz is Clock_50Mhz at PIN_N2
+--operation mode is input
+
+Clock_50Mhz = INPUT();
+
+
+--VGA_Red is VGA_Red at PIN_E10
+--operation mode is output
+
+VGA_Red = OUTPUT(B1_red_out);
+
+
+--VGA_Green is VGA_Green at PIN_D12
+--operation mode is output
+
+VGA_Green = OUTPUT(B1_green_out);
+
+
+--VGA_HSync is VGA_HSync at PIN_A7
+--operation mode is output
+
+VGA_HSync = OUTPUT(B1_horiz_sync_out);
+
+
+--VGA_VSync is VGA_VSync at PIN_D8
+--operation mode is output
+
+VGA_VSync = OUTPUT(B1_vert_sync_out);
+
+
+--VGA_Blue is VGA_Blue at PIN_B12
+--operation mode is output
+
+VGA_Blue = OUTPUT(B1_green_out);
+
+
+--video_blank_out is video_blank_out at PIN_D6
+--operation mode is output
+
+video_blank_out = OUTPUT(B1L721);
+
+
+--video_clock_out is video_clock_out at PIN_B8
+--operation mode is output
+
+video_clock_out = OUTPUT(GLOBAL(E1L2));
+
+
+
+
+
+--B1L321 is VGA_SYNC:1|vert_sync_out~clkctrl at CLKCTRL_G10
+B1L321 = cycloneii_clkctrl(.INCLK[0] = B1_vert_sync_out) WITH (clock_type = "Global Clock");
+
+
+--E1L2 is VGA_SYNC:1|video_PLL:video_PLL_inst|altpll:altpll_component|_clk0~clkctrl at CLKCTRL_G2
+E1L2 = cycloneii_clkctrl(.INCLK[0] = E1__clk0) WITH (clock_type = "Global Clock");
+
+
+--B1L64 is VGA_SYNC:1|horiz_sync_out~feeder at LCCOMB_X17_Y34_N20
+B1L64 = B1_horiz_sync;
+
+
+--B1L421 is VGA_SYNC:1|vert_sync_out~feeder at LCCOMB_X21_Y34_N20
+B1L421 = B1_vert_sync;
+
+
+--B1L85 is VGA_SYNC:1|pixel_column[1]~feeder at LCCOMB_X19_Y34_N10
+B1L85 = B1_h_count[1];
+
+

@@ -1,0 +1,649 @@
+-- Copyright (C) 1991-2005 Altera Corporation
+-- Your use of Altera Corporation's design tools, logic functions 
+-- and other software and tools, and its AMPP partner logic 
+-- functions, and any output files any of the foregoing 
+-- (including device programming or simulation files), and any 
+-- associated documentation or information are expressly subject 
+-- to the terms and conditions of the Altera Program License 
+-- Subscription Agreement, Altera MegaCore Function License 
+-- Agreement, or other applicable license agreement, including, 
+-- without limitation, that your use is for the sole purpose of 
+-- programming logic devices manufactured by Altera and sold by 
+-- Altera or its authorized distributors.  Please refer to the 
+-- applicable agreement for further details.
+--A1L901Q is red_out~reg0
+A1L901Q = DFFEAS(A1L801, C1__clk0,  ,  ,  ,  ,  ,  ,  );
+
+
+--A1L92Q is green_out~reg0
+A1L92Q = DFFEAS(A1L82, C1__clk0,  ,  ,  ,  ,  ,  ,  );
+
+
+--A1L42Q is blue_out~reg0
+A1L42Q = DFFEAS(A1L32, C1__clk0,  ,  ,  ,  ,  ,  ,  );
+
+
+--A1L74Q is horiz_sync_out~reg0
+A1L74Q = DFFEAS(horiz_sync, C1__clk0,  ,  ,  ,  ,  ,  ,  );
+
+
+--A1L741Q is vert_sync_out~reg0
+A1L741Q = DFFEAS(vert_sync, C1__clk0,  ,  ,  ,  ,  ,  ,  );
+
+
+--video_on_h is video_on_h
+video_on_h = DFFEAS(A1L051, C1__clk0,  ,  ,  ,  ,  ,  ,  );
+
+
+--video_on_v is video_on_v
+video_on_v = DFFEAS(A1L351, C1__clk0,  ,  ,  ,  ,  ,  ,  );
+
+
+--A1L151 is video_on_int~0
+A1L151 = video_on_h & video_on_v;
+
+
+--C1__clk0 is video_PLL:video_PLL_inst|altpll:altpll_component|_clk0
+C1__clk0 = PLL.CLK0(.ENA(), .CLKSWITCH(), .ARESET(), .PFDENA(), .INCLK(clock_50Mhz), .INCLK());
+
+
+--A1L08Q is pixel_row[0]~reg0
+A1L08Q = DFFEAS(v_count[0], C1__clk0,  ,  , A1L15,  ,  ,  ,  );
+
+
+--A1L28Q is pixel_row[1]~reg0
+A1L28Q = DFFEAS(v_count[1], C1__clk0,  ,  , A1L15,  ,  ,  ,  );
+
+
+--A1L48Q is pixel_row[2]~reg0
+A1L48Q = DFFEAS(v_count[2], C1__clk0,  ,  , A1L15,  ,  ,  ,  );
+
+
+--A1L68Q is pixel_row[3]~reg0
+A1L68Q = DFFEAS(v_count[3], C1__clk0,  ,  , A1L15,  ,  ,  ,  );
+
+
+--A1L88Q is pixel_row[4]~reg0
+A1L88Q = DFFEAS(v_count[4], C1__clk0,  ,  , A1L15,  ,  ,  ,  );
+
+
+--A1L09Q is pixel_row[5]~reg0
+A1L09Q = DFFEAS(v_count[5], C1__clk0,  ,  , A1L15,  ,  ,  ,  );
+
+
+--A1L29Q is pixel_row[6]~reg0
+A1L29Q = DFFEAS(v_count[6], C1__clk0,  ,  , A1L15,  ,  ,  ,  );
+
+
+--A1L49Q is pixel_row[7]~reg0
+A1L49Q = DFFEAS(v_count[7], C1__clk0,  ,  , A1L15,  ,  ,  ,  );
+
+
+--A1L69Q is pixel_row[8]~reg0
+A1L69Q = DFFEAS(v_count[8], C1__clk0,  ,  , A1L15,  ,  ,  ,  );
+
+
+--A1L95Q is pixel_column[0]~reg0
+A1L95Q = DFFEAS(h_count[0], C1__clk0,  ,  , A1L84,  ,  ,  ,  );
+
+
+--A1L16Q is pixel_column[1]~reg0
+A1L16Q = DFFEAS(h_count[1], C1__clk0,  ,  , A1L84,  ,  ,  ,  );
+
+
+--A1L36Q is pixel_column[2]~reg0
+A1L36Q = DFFEAS(h_count[2], C1__clk0,  ,  , A1L84,  ,  ,  ,  );
+
+
+--A1L56Q is pixel_column[3]~reg0
+A1L56Q = DFFEAS(h_count[3], C1__clk0,  ,  , A1L84,  ,  ,  ,  );
+
+
+--A1L76Q is pixel_column[4]~reg0
+A1L76Q = DFFEAS(h_count[4], C1__clk0,  ,  , A1L84,  ,  ,  ,  );
+
+
+--A1L96Q is pixel_column[5]~reg0
+A1L96Q = DFFEAS(h_count[5], C1__clk0,  ,  , A1L84,  ,  ,  ,  );
+
+
+--A1L17Q is pixel_column[6]~reg0
+A1L17Q = DFFEAS(h_count[6], C1__clk0,  ,  , A1L84,  ,  ,  ,  );
+
+
+--A1L37Q is pixel_column[7]~reg0
+A1L37Q = DFFEAS(h_count[7], C1__clk0,  ,  , A1L84,  ,  ,  ,  );
+
+
+--A1L57Q is pixel_column[8]~reg0
+A1L57Q = DFFEAS(h_count[8], C1__clk0,  ,  , A1L84,  ,  ,  ,  );
+
+
+--A1L77Q is pixel_column[9]~reg0
+A1L77Q = DFFEAS(h_count[9], C1__clk0,  ,  , A1L84,  ,  ,  ,  );
+
+
+--A1L801 is red_out~0
+A1L801 = video_on_h & video_on_v & red;
+
+
+--A1L82 is green_out~0
+A1L82 = video_on_h & video_on_v & green;
+
+
+--A1L32 is blue_out~0
+A1L32 = video_on_h & video_on_v & blue;
+
+
+--horiz_sync is horiz_sync
+horiz_sync = DFFEAS(A1L101, C1__clk0,  ,  ,  ,  ,  ,  ,  );
+
+
+--vert_sync is vert_sync
+vert_sync = DFFEAS(A1L301, C1__clk0,  ,  ,  ,  ,  ,  ,  );
+
+
+--h_count[9] is h_count[9]
+h_count[9] = DFFEAS(A1L14, C1__clk0,  ,  ,  ,  ,  ,  ,  );
+
+
+--h_count[8] is h_count[8]
+h_count[8] = DFFEAS(A1L24, C1__clk0,  ,  ,  ,  ,  ,  ,  );
+
+
+--h_count[7] is h_count[7]
+h_count[7] = DFFEAS(A1L51, C1__clk0,  ,  ,  ,  ,  ,  ,  );
+
+
+--A1L84 is LessThan~707
+A1L84 = !h_count[8] & !h_count[7] # !h_count[9];
+
+
+--v_count[9] is v_count[9]
+v_count[9] = DFFEAS(A1L341, C1__clk0,  ,  ,  ,  ,  , A1L501,  );
+
+
+--v_count[5] is v_count[5]
+v_count[5] = DFFEAS(A1L131, C1__clk0,  ,  ,  ,  ,  , A1L501,  );
+
+
+--v_count[6] is v_count[6]
+v_count[6] = DFFEAS(A1L431, C1__clk0,  ,  ,  ,  ,  , A1L501,  );
+
+
+--v_count[7] is v_count[7]
+v_count[7] = DFFEAS(A1L731, C1__clk0,  ,  ,  ,  ,  , A1L501,  );
+
+
+--v_count[8] is v_count[8]
+v_count[8] = DFFEAS(A1L041, C1__clk0,  ,  ,  ,  ,  , A1L501,  );
+
+
+--A1L94 is LessThan~708
+A1L94 = v_count[5] & v_count[6] & v_count[7] & v_count[8];
+
+
+--v_count[4] is v_count[4]
+v_count[4] = DFFEAS(A1L821, C1__clk0,  ,  ,  ,  ,  , A1L501,  );
+
+
+--v_count[0] is v_count[0]
+v_count[0] = DFFEAS(A1L611, C1__clk0,  ,  ,  ,  ,  , A1L501,  );
+
+
+--v_count[1] is v_count[1]
+v_count[1] = DFFEAS(A1L911, C1__clk0,  ,  ,  ,  ,  , A1L501,  );
+
+
+--v_count[2] is v_count[2]
+v_count[2] = DFFEAS(A1L221, C1__clk0,  ,  ,  ,  ,  , A1L501,  );
+
+
+--v_count[3] is v_count[3]
+v_count[3] = DFFEAS(A1L521, C1__clk0,  ,  ,  ,  ,  , A1L501,  );
+
+
+--A1L05 is LessThan~709
+A1L05 = v_count[0] # v_count[1] # v_count[2] # v_count[3];
+
+
+--A1L15 is LessThan~710
+A1L15 = !v_count[9] & (!v_count[4] & !A1L05 # !A1L94);
+
+
+--h_count[0] is h_count[0]
+h_count[0] = DFFEAS(A1L34, C1__clk0,  ,  ,  ,  ,  ,  ,  );
+
+
+--h_count[1] is h_count[1]
+h_count[1] = DFFEAS(A1L3, C1__clk0,  ,  ,  ,  ,  ,  ,  );
+
+
+--h_count[2] is h_count[2]
+h_count[2] = DFFEAS(A1L5, C1__clk0,  ,  ,  ,  ,  ,  ,  );
+
+
+--h_count[3] is h_count[3]
+h_count[3] = DFFEAS(A1L7, C1__clk0,  ,  ,  ,  ,  ,  ,  );
+
+
+--h_count[4] is h_count[4]
+h_count[4] = DFFEAS(A1L9, C1__clk0,  ,  ,  ,  ,  ,  ,  );
+
+
+--h_count[5] is h_count[5]
+h_count[5] = DFFEAS(A1L44, C1__clk0,  ,  ,  ,  ,  ,  ,  );
+
+
+--h_count[6] is h_count[6]
+h_count[6] = DFFEAS(A1L31, C1__clk0,  ,  ,  ,  ,  ,  ,  );
+
+
+--A1L89 is process0~359
+A1L89 = h_count[3] & h_count[4];
+
+
+--A1L25 is LessThan~711
+A1L25 = !h_count[0] & !h_count[1] & !h_count[2];
+
+
+--A1L99 is process0~360
+A1L99 = h_count[5] & h_count[6] & A1L89 & !A1L25;
+
+
+--A1L001 is process0~361
+A1L001 = !h_count[5] & !h_count[6] & (!h_count[4] # !h_count[3]);
+
+
+--A1L011 is reduce_nor~61
+A1L011 = h_count[7] & !h_count[8];
+
+
+--A1L101 is process0~362
+A1L101 = A1L99 # A1L001 # !A1L011 # !h_count[9];
+
+
+--A1L201 is process0~363
+A1L201 = v_count[9] # v_count[1] & (v_count[2] # !v_count[0]) # !v_count[1] & !v_count[2];
+
+
+--A1L301 is process0~364
+A1L301 = v_count[4] # A1L201 # !A1L94 # !v_count[3];
+
+
+--A1L1 is add~317
+A1L1 = h_count[0] $ VCC;
+
+--A1L2 is add~318
+A1L2 = CARRY(h_count[0]);
+
+
+--A1L3 is add~319
+A1L3 = h_count[1] & !A1L2 # !h_count[1] & (A1L2 # GND);
+
+--A1L4 is add~320
+A1L4 = CARRY(!A1L2 # !h_count[1]);
+
+
+--A1L5 is add~321
+A1L5 = h_count[2] & (A1L4 $ GND) # !h_count[2] & !A1L4 & VCC;
+
+--A1L6 is add~322
+A1L6 = CARRY(h_count[2] & !A1L4);
+
+
+--A1L7 is add~323
+A1L7 = h_count[3] & !A1L6 # !h_count[3] & (A1L6 # GND);
+
+--A1L8 is add~324
+A1L8 = CARRY(!A1L6 # !h_count[3]);
+
+
+--A1L9 is add~325
+A1L9 = h_count[4] & (A1L8 $ GND) # !h_count[4] & !A1L8 & VCC;
+
+--A1L01 is add~326
+A1L01 = CARRY(h_count[4] & !A1L8);
+
+
+--A1L11 is add~327
+A1L11 = h_count[5] & !A1L01 # !h_count[5] & (A1L01 # GND);
+
+--A1L21 is add~328
+A1L21 = CARRY(!A1L01 # !h_count[5]);
+
+
+--A1L31 is add~329
+A1L31 = h_count[6] & (A1L21 $ GND) # !h_count[6] & !A1L21 & VCC;
+
+--A1L41 is add~330
+A1L41 = CARRY(h_count[6] & !A1L21);
+
+
+--A1L51 is add~331
+A1L51 = h_count[7] & !A1L41 # !h_count[7] & (A1L41 # GND);
+
+--A1L61 is add~332
+A1L61 = CARRY(!A1L41 # !h_count[7]);
+
+
+--A1L71 is add~333
+A1L71 = h_count[8] & (A1L61 $ GND) # !h_count[8] & !A1L61 & VCC;
+
+--A1L81 is add~334
+A1L81 = CARRY(h_count[8] & !A1L61);
+
+
+--A1L91 is add~335
+A1L91 = h_count[9] $ A1L81;
+
+
+--A1L111 is reduce_nor~62
+A1L111 = h_count[7] # h_count[3] # h_count[4] # !h_count[8];
+
+
+--A1L211 is reduce_nor~63
+A1L211 = h_count[9] & A1L25 & !h_count[6];
+
+
+--A1L14 is h_count~418
+A1L14 = A1L91 & (A1L111 # !A1L211 # !h_count[5]);
+
+
+--A1L24 is h_count~419
+A1L24 = A1L71 & (A1L111 # !A1L211 # !h_count[5]);
+
+
+--A1L311 is reduce_nor~64
+A1L311 = h_count[5] # !A1L211 # !A1L011 # !A1L89;
+
+
+--A1L611 is v_count[0]~253
+A1L611 = v_count[0] & (A1L311 $ GND) # !v_count[0] & !A1L311 & VCC;
+
+--A1L711 is v_count[0]~254
+A1L711 = CARRY(v_count[0] & !A1L311);
+
+
+--A1L911 is v_count[1]~255
+A1L911 = v_count[1] & !A1L711 # !v_count[1] & (A1L711 # GND);
+
+--A1L021 is v_count[1]~256
+A1L021 = CARRY(!A1L711 # !v_count[1]);
+
+
+--A1L221 is v_count[2]~257
+A1L221 = v_count[2] & (A1L021 $ GND) # !v_count[2] & !A1L021 & VCC;
+
+--A1L321 is v_count[2]~258
+A1L321 = CARRY(v_count[2] & !A1L021);
+
+
+--A1L521 is v_count[3]~259
+A1L521 = v_count[3] & !A1L321 # !v_count[3] & (A1L321 # GND);
+
+--A1L621 is v_count[3]~260
+A1L621 = CARRY(!A1L321 # !v_count[3]);
+
+
+--A1L821 is v_count[4]~261
+A1L821 = v_count[4] & (A1L621 $ GND) # !v_count[4] & !A1L621 & VCC;
+
+--A1L921 is v_count[4]~262
+A1L921 = CARRY(v_count[4] & !A1L621);
+
+
+--A1L131 is v_count[5]~263
+A1L131 = v_count[5] & !A1L921 # !v_count[5] & (A1L921 # GND);
+
+--A1L231 is v_count[5]~264
+A1L231 = CARRY(!A1L921 # !v_count[5]);
+
+
+--A1L431 is v_count[6]~265
+A1L431 = v_count[6] & (A1L231 $ GND) # !v_count[6] & !A1L231 & VCC;
+
+--A1L531 is v_count[6]~266
+A1L531 = CARRY(v_count[6] & !A1L231);
+
+
+--A1L731 is v_count[7]~267
+A1L731 = v_count[7] & !A1L531 # !v_count[7] & (A1L531 # GND);
+
+--A1L831 is v_count[7]~268
+A1L831 = CARRY(!A1L531 # !v_count[7]);
+
+
+--A1L041 is v_count[8]~269
+A1L041 = v_count[8] & (A1L831 $ GND) # !v_count[8] & !A1L831 & VCC;
+
+--A1L141 is v_count[8]~270
+A1L141 = CARRY(v_count[8] & !A1L831);
+
+
+--A1L341 is v_count[9]~271
+A1L341 = v_count[9] $ A1L141;
+
+
+--A1L35 is LessThan~712
+A1L35 = !v_count[0] & !v_count[1] # !v_count[3] # !v_count[2];
+
+
+--A1L45 is LessThan~713
+A1L45 = !v_count[4] & !v_count[5] & !v_count[6] & !v_count[7];
+
+
+--A1L55 is LessThan~714
+A1L55 = A1L35 & A1L45 & !v_count[8];
+
+
+--A1L401 is process0~365
+A1L401 = !h_count[8] & !h_count[7] # !v_count[9] # !h_count[9];
+
+
+--A1L501 is process0~366
+A1L501 = !A1L55 & !A1L401 & (h_count[8] # !A1L001);
+
+
+--A1L34 is h_count~420
+A1L34 = A1L1 & (A1L111 # !A1L211 # !h_count[5]);
+
+
+--A1L44 is h_count~421
+A1L44 = A1L11 & (A1L111 # !A1L211 # !h_count[5]);
+
+
+--A1L051 is video_on_h~2
+A1L051 = A1L84;
+
+
+--A1L351 is video_on_v~2
+A1L351 = A1L15;
+
+
+--red is red
+--operation mode is input
+
+red = INPUT();
+
+
+--green is green
+--operation mode is input
+
+green = INPUT();
+
+
+--blue is blue
+--operation mode is input
+
+blue = INPUT();
+
+
+--clock_50Mhz is clock_50Mhz
+--operation mode is input
+
+clock_50Mhz = INPUT();
+
+
+--red_out is red_out
+--operation mode is output
+
+red_out = OUTPUT(A1L901Q);
+
+
+--green_out is green_out
+--operation mode is output
+
+green_out = OUTPUT(A1L92Q);
+
+
+--blue_out is blue_out
+--operation mode is output
+
+blue_out = OUTPUT(A1L42Q);
+
+
+--horiz_sync_out is horiz_sync_out
+--operation mode is output
+
+horiz_sync_out = OUTPUT(A1L74Q);
+
+
+--vert_sync_out is vert_sync_out
+--operation mode is output
+
+vert_sync_out = OUTPUT(A1L741Q);
+
+
+--video_on is video_on
+--operation mode is output
+
+video_on = OUTPUT(A1L151);
+
+
+--pixel_clock is pixel_clock
+--operation mode is output
+
+pixel_clock = OUTPUT(C1__clk0);
+
+
+--pixel_row[0] is pixel_row[0]
+--operation mode is output
+
+pixel_row[0] = OUTPUT(A1L08Q);
+
+
+--pixel_row[1] is pixel_row[1]
+--operation mode is output
+
+pixel_row[1] = OUTPUT(A1L28Q);
+
+
+--pixel_row[2] is pixel_row[2]
+--operation mode is output
+
+pixel_row[2] = OUTPUT(A1L48Q);
+
+
+--pixel_row[3] is pixel_row[3]
+--operation mode is output
+
+pixel_row[3] = OUTPUT(A1L68Q);
+
+
+--pixel_row[4] is pixel_row[4]
+--operation mode is output
+
+pixel_row[4] = OUTPUT(A1L88Q);
+
+
+--pixel_row[5] is pixel_row[5]
+--operation mode is output
+
+pixel_row[5] = OUTPUT(A1L09Q);
+
+
+--pixel_row[6] is pixel_row[6]
+--operation mode is output
+
+pixel_row[6] = OUTPUT(A1L29Q);
+
+
+--pixel_row[7] is pixel_row[7]
+--operation mode is output
+
+pixel_row[7] = OUTPUT(A1L49Q);
+
+
+--pixel_row[8] is pixel_row[8]
+--operation mode is output
+
+pixel_row[8] = OUTPUT(A1L69Q);
+
+
+--pixel_row[9] is pixel_row[9]
+--operation mode is output
+
+pixel_row[9] = OUTPUT(GND);
+
+
+--pixel_column[0] is pixel_column[0]
+--operation mode is output
+
+pixel_column[0] = OUTPUT(A1L95Q);
+
+
+--pixel_column[1] is pixel_column[1]
+--operation mode is output
+
+pixel_column[1] = OUTPUT(A1L16Q);
+
+
+--pixel_column[2] is pixel_column[2]
+--operation mode is output
+
+pixel_column[2] = OUTPUT(A1L36Q);
+
+
+--pixel_column[3] is pixel_column[3]
+--operation mode is output
+
+pixel_column[3] = OUTPUT(A1L56Q);
+
+
+--pixel_column[4] is pixel_column[4]
+--operation mode is output
+
+pixel_column[4] = OUTPUT(A1L76Q);
+
+
+--pixel_column[5] is pixel_column[5]
+--operation mode is output
+
+pixel_column[5] = OUTPUT(A1L96Q);
+
+
+--pixel_column[6] is pixel_column[6]
+--operation mode is output
+
+pixel_column[6] = OUTPUT(A1L17Q);
+
+
+--pixel_column[7] is pixel_column[7]
+--operation mode is output
+
+pixel_column[7] = OUTPUT(A1L37Q);
+
+
+--pixel_column[8] is pixel_column[8]
+--operation mode is output
+
+pixel_column[8] = OUTPUT(A1L57Q);
+
+
+--pixel_column[9] is pixel_column[9]
+--operation mode is output
+
+pixel_column[9] = OUTPUT(A1L77Q);
+
+

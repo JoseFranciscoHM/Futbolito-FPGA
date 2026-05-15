@@ -1,0 +1,139 @@
+# Copyright (C) 1991-2005 Altera Corporation
+# Your use of Altera Corporation's design tools, logic functions 
+# and other software and tools, and its AMPP partner logic       
+# functions, and any output files any of the foregoing           
+# (including device programming or simulation files), and any    
+# associated documentation or information are expressly subject  
+# to the terms and conditions of the Altera Program License      
+# Subscription Agreement, Altera MegaCore Function License       
+# Agreement, or other applicable license agreement, including,   
+# without limitation, that your use is for the sole purpose of   
+# programming logic devices manufactured by Altera and sold by   
+# Altera or its authorized distributors.  Please refer to the    
+# applicable agreement for further details.
+
+
+# The default values for assignments are stored in the file
+#		VGA_BALL_assignment_defaults.qdf
+# If this file doesn't exist, and for assignments not listed, see file
+#		assignment_defaults.qdf
+
+# Altera recommends that you do not modify this file. This
+# file is updated automatically by the Quartus II software
+# and any changes you make may be lost or overwritten.
+
+
+# Project-Wide Assignments
+# ========================
+set_global_assignment -name ORIGINAL_QUARTUS_VERSION 4.2
+set_global_assignment -name PROJECT_CREATION_TIME_DATE "21:16:56  JANUARY 12, 2005"
+set_global_assignment -name LAST_QUARTUS_VERSION "23.1std.1 Lite Edition"
+
+# Pin & Location Assignments
+# ==========================
+# Pin & Location Assignments
+# ==========================
+set_location_assignment PIN_Y2 -to Clock_50Mhz
+
+# VGA Red bus
+set_location_assignment PIN_H10 -to VGA_Red[0]
+set_location_assignment PIN_H8 -to VGA_Red[1]
+set_location_assignment PIN_J12 -to VGA_Red[2]
+set_location_assignment PIN_G10 -to VGA_Red[3]
+set_location_assignment PIN_F12 -to VGA_Red[4]
+set_location_assignment PIN_D10 -to VGA_Red[5]
+set_location_assignment PIN_E11 -to VGA_Red[6]
+set_location_assignment PIN_E12 -to VGA_Red[7]
+
+# VGA Green bus
+set_location_assignment PIN_G8 -to VGA_Green[0]
+set_location_assignment PIN_G11 -to VGA_Green[1]
+set_location_assignment PIN_F8 -to VGA_Green[2]
+set_location_assignment PIN_H12 -to VGA_Green[3]
+set_location_assignment PIN_C8 -to VGA_Green[4]
+set_location_assignment PIN_B8 -to VGA_Green[5]
+set_location_assignment PIN_F10 -to VGA_Green[6]
+set_location_assignment PIN_C9 -to VGA_Green[7]
+
+# VGA Blue bus
+set_location_assignment PIN_B10 -to VGA_Blue[0]
+set_location_assignment PIN_A10 -to VGA_Blue[1]
+set_location_assignment PIN_C11 -to VGA_Blue[2]
+set_location_assignment PIN_B11 -to VGA_Blue[3]
+set_location_assignment PIN_A11 -to VGA_Blue[4]
+set_location_assignment PIN_C12 -to VGA_Blue[5]
+set_location_assignment PIN_D11 -to VGA_Blue[6]
+set_location_assignment PIN_D12 -to VGA_Blue[7]
+
+# VGA Control
+set_location_assignment PIN_G13 -to VGA_HSync
+set_location_assignment PIN_C13 -to VGA_VSync
+set_location_assignment PIN_A12 -to VGA_Clk
+set_location_assignment PIN_F11 -to VGA_Blank_N
+set_location_assignment PIN_C10 -to VGA_Sync_N
+
+
+# Analysis & Synthesis Assignments
+# ================================
+set_global_assignment -name FAMILY "Cyclone IV E"
+set_global_assignment -name TOP_LEVEL_ENTITY VGA_BALL_TOP
+
+# Fitter Assignments
+# ==================
+set_global_assignment -name DEVICE EP4CE115F29C7
+set_global_assignment -name ERROR_CHECK_FREQUENCY_DIVISOR 1
+
+# Assembler Assignments
+# =====================
+
+set_global_assignment -name MIN_CORE_JUNCTION_TEMP 0
+set_global_assignment -name MAX_CORE_JUNCTION_TEMP 85
+set_global_assignment -name NOMINAL_CORE_SUPPLY_VOLTAGE 1.2V
+set_global_assignment -name USE_CONFIGURATION_DEVICE ON
+set_global_assignment -name STRATIX_DEVICE_IO_STANDARD "2.5 V"
+set_location_assignment PIN_AB28 -to SW0
+set_location_assignment PIN_M23 -to BTN_UP_LEFT
+set_location_assignment PIN_M21 -to BTN_DOWN_LEFT
+set_location_assignment PIN_N21 -to BTN_UP_RIGHT
+set_location_assignment PIN_R24 -to BTN_DOWN_RIGHT
+set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "23 MM HEAT SINK WITH 200 LFPM AIRFLOW"
+set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
+set_global_assignment -name LL_ROOT_REGION ON -section_id "Root Region"
+set_global_assignment -name LL_MEMBER_STATE LOCKED -section_id "Root Region"
+set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
+set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
+set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
+set_global_assignment -name VHDL_FILE Audio.vhd
+set_global_assignment -name VHDL_FILE i2c.vhd
+set_global_assignment -name VHDL_FILE AudioPLL.vhd
+set_global_assignment -name QIP_FILE AudioPLL.qip
+set_global_assignment -name VHDL_FILE Mario_Theme.vhd
+set_global_assignment -name VHDL_FILE Wavetable.vhd
+set_global_assignment -name VHDL_FILE goal_sfx_player.vhd
+set_global_assignment -name VHDL_FILE background_music.vhd
+set_global_assignment -name VHDL_FILE arcade_audio.vhd
+set_global_assignment -name VHDL_FILE dfplayer_ctrl.vhd
+set_global_assignment -name VHDL_FILE VGA_BALL_TOP.vhd
+set_global_assignment -name VHDL_FILE anim_ball_rom.vhd
+set_global_assignment -name VHDL_FILE anim_player_rom.vhd
+set_global_assignment -name VHDL_FILE video_PLL.vhd
+set_global_assignment -name VHDL_FILE vga_sync.vhd
+set_global_assignment -name VHDL_FILE BALL.VHD
+set_global_assignment -name VHDL_FILE CHAR_ROM.VHD
+set_location_assignment PIN_AB22 -to UART_TX
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to UART_TX
+set_location_assignment PIN_AB21 -to DF_BUSY
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to DF_BUSY
+set_instance_assignment -name WEAK_PULL_UP_RESISTOR ON -to DF_BUSY
+set_location_assignment PIN_E1 -to AUD_XCK
+set_location_assignment PIN_F2 -to AUD_BCLK
+set_location_assignment PIN_D1 -to AUD_DACDAT
+set_location_assignment PIN_E3 -to AUD_DACLRCK
+set_location_assignment PIN_D2 -to AUD_ADCDAT
+set_location_assignment PIN_C2 -to AUD_ADCLRCK
+set_location_assignment PIN_B7 -to I2C_SCLK
+set_location_assignment PIN_A8 -to I2C_SDAT
+set_global_assignment -name BDF_FILE VGA_BALL.bdf
+set_location_assignment PIN_E21 -to LEDG[0]
+set_location_assignment PIN_E22 -to LEDG[1]
+set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

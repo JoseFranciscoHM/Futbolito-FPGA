@@ -1,0 +1,708 @@
+-- Copyright (C) 1991-2005 Altera Corporation
+-- Your use of Altera Corporation's design tools, logic functions 
+-- and other software and tools, and its AMPP partner logic 
+-- functions, and any output files any of the foregoing 
+-- (including device programming or simulation files), and any 
+-- associated documentation or information are expressly subject 
+-- to the terms and conditions of the Altera Program License 
+-- Subscription Agreement, Altera MegaCore Function License 
+-- Agreement, or other applicable license agreement, including, 
+-- without limitation, that your use is for the sole purpose of 
+-- programming logic devices manufactured by Altera and sold by 
+-- Altera or its authorized distributors.  Please refer to the 
+-- applicable agreement for further details.
+--A1L321Q is red_out~reg0 at LCFF_X64_Y26_N1
+A1L321Q = DFFEAS(A1L221, GLOBAL(C1L2),  ,  ,  ,  ,  ,  ,  );
+
+
+--A1L92Q is green_out~reg0 at LCFF_X64_Y26_N13
+A1L92Q = DFFEAS(A1L82, GLOBAL(C1L2),  ,  ,  ,  ,  ,  ,  );
+
+
+--A1L42Q is blue_out~reg0 at LCFF_X64_Y26_N31
+A1L42Q = DFFEAS(A1L32, GLOBAL(C1L2),  ,  ,  ,  ,  ,  ,  );
+
+
+--A1L74Q is horiz_sync_out~reg0 at LCFF_X48_Y28_N1
+A1L74Q = DFFEAS(A1L84, GLOBAL(C1L2),  ,  ,  ,  ,  ,  ,  );
+
+
+--A1L161Q is vert_sync_out~reg0 at LCFF_X48_Y26_N25
+A1L161Q = DFFEAS(A1L261, GLOBAL(C1L2),  ,  ,  ,  ,  ,  ,  );
+
+
+--video_on_h is video_on_h at LCFF_X46_Y27_N15
+video_on_h = DFFEAS(A1L94, GLOBAL(C1L2),  ,  ,  ,  ,  ,  ,  );
+
+
+--video_on_v is video_on_v at LCFF_X48_Y26_N13
+video_on_v = DFFEAS(A1L25, GLOBAL(C1L2),  ,  ,  ,  ,  ,  ,  );
+
+
+--A1L561 is video_on_int~0 at LCCOMB_X64_Y26_N16
+A1L561 = video_on_v & video_on_h;
+
+
+--C1__clk0 is video_PLL:video_PLL_inst|altpll:altpll_component|_clk0 at PLL_1
+C1__clk0 = PLL.CLK0(.ENA(), .CLKSWITCH(), .ARESET(), .PFDENA(), .INCLK(clock_50Mhz), .INCLK());
+
+
+--A1L68Q is pixel_row[0]~reg0 at LCFF_X48_Y26_N11
+A1L68Q = DFFEAS(A1L78, GLOBAL(C1L2),  ,  , A1L25,  ,  ,  ,  );
+
+
+--A1L98Q is pixel_row[1]~reg0 at LCFF_X48_Y26_N15
+A1L98Q = DFFEAS(A1L09, GLOBAL(C1L2),  ,  , A1L25,  ,  ,  ,  );
+
+
+--A1L29Q is pixel_row[2]~reg0 at LCFF_X48_Y26_N23
+A1L29Q = DFFEAS(A1L39, GLOBAL(C1L2),  ,  , A1L25,  ,  ,  ,  );
+
+
+--A1L59Q is pixel_row[3]~reg0 at LCFF_X48_Y26_N29
+A1L59Q = DFFEAS(A1L69, GLOBAL(C1L2),  ,  , A1L25,  ,  ,  ,  );
+
+
+--A1L89Q is pixel_row[4]~reg0 at LCFF_X48_Y26_N5
+A1L89Q = DFFEAS(UNCONNECTED_DATAIN, GLOBAL(C1L2),  ,  , A1L25, v_count[4],  ,  , VCC);
+
+
+--A1L001Q is pixel_row[5]~reg0 at LCFF_X48_Y26_N19
+A1L001Q = DFFEAS(A1L101, GLOBAL(C1L2),  ,  , A1L25,  ,  ,  ,  );
+
+
+--A1L301Q is pixel_row[6]~reg0 at LCFF_X48_Y26_N21
+A1L301Q = DFFEAS(A1L401, GLOBAL(C1L2),  ,  , A1L25,  ,  ,  ,  );
+
+
+--A1L601Q is pixel_row[7]~reg0 at LCFF_X48_Y26_N17
+A1L601Q = DFFEAS(A1L701, GLOBAL(C1L2),  ,  , A1L25,  ,  ,  ,  );
+
+
+--A1L901Q is pixel_row[8]~reg0 at LCFF_X48_Y26_N9
+A1L901Q = DFFEAS(A1L011, GLOBAL(C1L2),  ,  , A1L25,  ,  ,  ,  );
+
+
+--A1L16Q is pixel_column[0]~reg0 at LCFF_X46_Y27_N1
+A1L16Q = DFFEAS(UNCONNECTED_DATAIN, GLOBAL(C1L2),  ,  , A1L94, h_count[0],  ,  , VCC);
+
+
+--A1L36Q is pixel_column[1]~reg0 at LCFF_X46_Y27_N25
+A1L36Q = DFFEAS(A1L46, GLOBAL(C1L2),  ,  , A1L94,  ,  ,  ,  );
+
+
+--A1L66Q is pixel_column[2]~reg0 at LCFF_X46_Y27_N5
+A1L66Q = DFFEAS(A1L76, GLOBAL(C1L2),  ,  , A1L94,  ,  ,  ,  );
+
+
+--A1L96Q is pixel_column[3]~reg0 at LCFF_X46_Y27_N27
+A1L96Q = DFFEAS(UNCONNECTED_DATAIN, GLOBAL(C1L2),  ,  , A1L94, h_count[3],  ,  , VCC);
+
+
+--A1L17Q is pixel_column[4]~reg0 at LCFF_X46_Y27_N11
+A1L17Q = DFFEAS(UNCONNECTED_DATAIN, GLOBAL(C1L2),  ,  , A1L94, h_count[4],  ,  , VCC);
+
+
+--A1L37Q is pixel_column[5]~reg0 at LCFF_X46_Y27_N13
+A1L37Q = DFFEAS(A1L47, GLOBAL(C1L2),  ,  , A1L94,  ,  ,  ,  );
+
+
+--A1L67Q is pixel_column[6]~reg0 at LCFF_X46_Y27_N9
+A1L67Q = DFFEAS(UNCONNECTED_DATAIN, GLOBAL(C1L2),  ,  , A1L94, h_count[6],  ,  , VCC);
+
+
+--A1L87Q is pixel_column[7]~reg0 at LCFF_X46_Y27_N21
+A1L87Q = DFFEAS(UNCONNECTED_DATAIN, GLOBAL(C1L2),  ,  , A1L94, h_count[7],  ,  , VCC);
+
+
+--A1L08Q is pixel_column[8]~reg0 at LCFF_X46_Y27_N7
+A1L08Q = DFFEAS(UNCONNECTED_DATAIN, GLOBAL(C1L2),  ,  , A1L94, h_count[8],  ,  , VCC);
+
+
+--A1L28Q is pixel_column[9]~reg0 at LCFF_X46_Y27_N29
+A1L28Q = DFFEAS(A1L38, GLOBAL(C1L2),  ,  , A1L94,  ,  ,  ,  );
+
+
+--A1L221 is red_out~0 at LCCOMB_X64_Y26_N0
+A1L221 = video_on_v & red & video_on_h;
+
+
+--A1L82 is green_out~0 at LCCOMB_X64_Y26_N12
+A1L82 = green & video_on_v & video_on_h;
+
+
+--A1L32 is blue_out~0 at LCCOMB_X64_Y26_N30
+A1L32 = blue & video_on_v & video_on_h;
+
+
+--horiz_sync is horiz_sync at LCFF_X46_Y27_N3
+horiz_sync = DFFEAS(A1L511, GLOBAL(C1L2),  ,  ,  ,  ,  ,  ,  );
+
+
+--vert_sync is vert_sync at LCFF_X48_Y26_N27
+vert_sync = DFFEAS(A1L711, GLOBAL(C1L2),  ,  ,  ,  ,  ,  ,  );
+
+
+--h_count[9] is h_count[9] at LCFF_X46_Y26_N3
+h_count[9] = DFFEAS(A1L14, GLOBAL(C1L2),  ,  ,  ,  ,  ,  ,  );
+
+
+--h_count[8] is h_count[8] at LCFF_X46_Y26_N5
+h_count[8] = DFFEAS(A1L24, GLOBAL(C1L2),  ,  ,  ,  ,  ,  ,  );
+
+
+--h_count[7] is h_count[7] at LCFF_X46_Y26_N21
+h_count[7] = DFFEAS(A1L51, GLOBAL(C1L2),  ,  ,  ,  ,  ,  ,  );
+
+
+--A1L94 is LessThan~707 at LCCOMB_X46_Y27_N14
+A1L94 = !h_count[7] & !h_count[8] # !h_count[9];
+
+
+--v_count[9] is v_count[9] at LCFF_X47_Y26_N31
+v_count[9] = DFFEAS(A1L751, GLOBAL(C1L2),  ,  ,  ,  ,  , A1L911,  );
+
+
+--v_count[5] is v_count[5] at LCFF_X47_Y26_N23
+v_count[5] = DFFEAS(A1L541, GLOBAL(C1L2),  ,  ,  ,  ,  , A1L911,  );
+
+
+--v_count[6] is v_count[6] at LCFF_X47_Y26_N25
+v_count[6] = DFFEAS(A1L841, GLOBAL(C1L2),  ,  ,  ,  ,  , A1L911,  );
+
+
+--v_count[7] is v_count[7] at LCFF_X47_Y26_N27
+v_count[7] = DFFEAS(A1L151, GLOBAL(C1L2),  ,  ,  ,  ,  , A1L911,  );
+
+
+--v_count[8] is v_count[8] at LCFF_X47_Y26_N29
+v_count[8] = DFFEAS(A1L451, GLOBAL(C1L2),  ,  ,  ,  ,  , A1L911,  );
+
+
+--A1L05 is LessThan~708 at LCCOMB_X48_Y26_N0
+A1L05 = v_count[7] & v_count[6] & v_count[5] & v_count[8];
+
+
+--v_count[4] is v_count[4] at LCFF_X47_Y26_N21
+v_count[4] = DFFEAS(A1L241, GLOBAL(C1L2),  ,  ,  ,  ,  , A1L911,  );
+
+
+--v_count[0] is v_count[0] at LCFF_X47_Y26_N13
+v_count[0] = DFFEAS(A1L031, GLOBAL(C1L2),  ,  ,  ,  ,  , A1L911,  );
+
+
+--v_count[1] is v_count[1] at LCFF_X47_Y26_N15
+v_count[1] = DFFEAS(A1L331, GLOBAL(C1L2),  ,  ,  ,  ,  , A1L911,  );
+
+
+--v_count[2] is v_count[2] at LCFF_X47_Y26_N17
+v_count[2] = DFFEAS(A1L631, GLOBAL(C1L2),  ,  ,  ,  ,  , A1L911,  );
+
+
+--v_count[3] is v_count[3] at LCFF_X47_Y26_N19
+v_count[3] = DFFEAS(A1L931, GLOBAL(C1L2),  ,  ,  ,  ,  , A1L911,  );
+
+
+--A1L15 is LessThan~709 at LCCOMB_X48_Y26_N2
+A1L15 = v_count[1] # v_count[3] # v_count[0] # v_count[2];
+
+
+--A1L25 is LessThan~710 at LCCOMB_X48_Y26_N12
+A1L25 = !v_count[9] & (!v_count[4] & !A1L15 # !A1L05);
+
+
+--h_count[0] is h_count[0] at LCFF_X46_Y27_N17
+h_count[0] = DFFEAS(A1L34, GLOBAL(C1L2),  ,  ,  ,  ,  ,  ,  );
+
+
+--h_count[1] is h_count[1] at LCFF_X46_Y26_N9
+h_count[1] = DFFEAS(A1L3, GLOBAL(C1L2),  ,  ,  ,  ,  ,  ,  );
+
+
+--h_count[2] is h_count[2] at LCFF_X46_Y26_N11
+h_count[2] = DFFEAS(A1L5, GLOBAL(C1L2),  ,  ,  ,  ,  ,  ,  );
+
+
+--h_count[3] is h_count[3] at LCFF_X46_Y26_N13
+h_count[3] = DFFEAS(A1L7, GLOBAL(C1L2),  ,  ,  ,  ,  ,  ,  );
+
+
+--h_count[4] is h_count[4] at LCFF_X46_Y26_N15
+h_count[4] = DFFEAS(A1L9, GLOBAL(C1L2),  ,  ,  ,  ,  ,  ,  );
+
+
+--h_count[5] is h_count[5] at LCFF_X46_Y27_N23
+h_count[5] = DFFEAS(A1L44, GLOBAL(C1L2),  ,  ,  ,  ,  ,  ,  );
+
+
+--h_count[6] is h_count[6] at LCFF_X46_Y26_N19
+h_count[6] = DFFEAS(A1L31, GLOBAL(C1L2),  ,  ,  ,  ,  ,  ,  );
+
+
+--A1L211 is process0~359 at LCCOMB_X46_Y26_N0
+A1L211 = h_count[4] & h_count[3];
+
+
+--A1L35 is LessThan~711 at LCCOMB_X47_Y26_N8
+A1L35 = !h_count[1] & !h_count[0] & !h_count[2];
+
+
+--A1L311 is process0~360 at LCCOMB_X46_Y27_N30
+A1L311 = !A1L35 & h_count[5] & h_count[6] & A1L211;
+
+
+--A1L411 is process0~361 at LCCOMB_X46_Y26_N26
+A1L411 = !h_count[5] & !h_count[6] & (!h_count[3] # !h_count[4]);
+
+
+--A1L421 is reduce_nor~61 at LCCOMB_X46_Y26_N28
+A1L421 = !h_count[8] & h_count[7];
+
+
+--A1L511 is process0~362 at LCCOMB_X46_Y27_N2
+A1L511 = A1L411 # A1L311 # !A1L421 # !h_count[9];
+
+
+--A1L611 is process0~363 at LCCOMB_X48_Y26_N6
+A1L611 = v_count[9] # v_count[2] & (v_count[1]) # !v_count[2] & (!v_count[1] # !v_count[0]);
+
+
+--A1L711 is process0~364 at LCCOMB_X48_Y26_N26
+A1L711 = A1L611 # v_count[4] # !v_count[3] # !A1L05;
+
+
+--A1L1 is add~317 at LCCOMB_X46_Y26_N6
+A1L1 = h_count[0] $ VCC;
+
+--A1L2 is add~318 at LCCOMB_X46_Y26_N6
+A1L2 = CARRY(h_count[0]);
+
+
+--A1L3 is add~319 at LCCOMB_X46_Y26_N8
+A1L3 = h_count[1] & !A1L2 # !h_count[1] & (A1L2 # GND);
+
+--A1L4 is add~320 at LCCOMB_X46_Y26_N8
+A1L4 = CARRY(!A1L2 # !h_count[1]);
+
+
+--A1L5 is add~321 at LCCOMB_X46_Y26_N10
+A1L5 = h_count[2] & (A1L4 $ GND) # !h_count[2] & !A1L4 & VCC;
+
+--A1L6 is add~322 at LCCOMB_X46_Y26_N10
+A1L6 = CARRY(h_count[2] & !A1L4);
+
+
+--A1L7 is add~323 at LCCOMB_X46_Y26_N12
+A1L7 = h_count[3] & !A1L6 # !h_count[3] & (A1L6 # GND);
+
+--A1L8 is add~324 at LCCOMB_X46_Y26_N12
+A1L8 = CARRY(!A1L6 # !h_count[3]);
+
+
+--A1L9 is add~325 at LCCOMB_X46_Y26_N14
+A1L9 = h_count[4] & (A1L8 $ GND) # !h_count[4] & !A1L8 & VCC;
+
+--A1L01 is add~326 at LCCOMB_X46_Y26_N14
+A1L01 = CARRY(h_count[4] & !A1L8);
+
+
+--A1L11 is add~327 at LCCOMB_X46_Y26_N16
+A1L11 = h_count[5] & !A1L01 # !h_count[5] & (A1L01 # GND);
+
+--A1L21 is add~328 at LCCOMB_X46_Y26_N16
+A1L21 = CARRY(!A1L01 # !h_count[5]);
+
+
+--A1L31 is add~329 at LCCOMB_X46_Y26_N18
+A1L31 = h_count[6] & (A1L21 $ GND) # !h_count[6] & !A1L21 & VCC;
+
+--A1L41 is add~330 at LCCOMB_X46_Y26_N18
+A1L41 = CARRY(h_count[6] & !A1L21);
+
+
+--A1L51 is add~331 at LCCOMB_X46_Y26_N20
+A1L51 = h_count[7] & !A1L41 # !h_count[7] & (A1L41 # GND);
+
+--A1L61 is add~332 at LCCOMB_X46_Y26_N20
+A1L61 = CARRY(!A1L41 # !h_count[7]);
+
+
+--A1L71 is add~333 at LCCOMB_X46_Y26_N22
+A1L71 = h_count[8] & (A1L61 $ GND) # !h_count[8] & !A1L61 & VCC;
+
+--A1L81 is add~334 at LCCOMB_X46_Y26_N22
+A1L81 = CARRY(h_count[8] & !A1L61);
+
+
+--A1L91 is add~335 at LCCOMB_X46_Y26_N24
+A1L91 = A1L81 $ h_count[9];
+
+
+--A1L521 is reduce_nor~62 at LCCOMB_X46_Y27_N18
+A1L521 = h_count[3] # h_count[4] # h_count[7] # !h_count[8];
+
+
+--A1L621 is reduce_nor~63 at LCCOMB_X47_Y26_N6
+A1L621 = h_count[9] & A1L35 & !h_count[6];
+
+
+--A1L14 is h_count~418 at LCCOMB_X46_Y26_N2
+A1L14 = A1L91 & (A1L521 # !A1L621 # !h_count[5]);
+
+
+--A1L24 is h_count~419 at LCCOMB_X46_Y26_N4
+A1L24 = A1L71 & (A1L521 # !A1L621 # !h_count[5]);
+
+
+--A1L721 is reduce_nor~64 at LCCOMB_X47_Y26_N2
+A1L721 = h_count[5] # !A1L421 # !A1L211 # !A1L621;
+
+
+--A1L031 is v_count[0]~253 at LCCOMB_X47_Y26_N12
+A1L031 = v_count[0] & (A1L721 $ GND) # !v_count[0] & !A1L721 & VCC;
+
+--A1L131 is v_count[0]~254 at LCCOMB_X47_Y26_N12
+A1L131 = CARRY(v_count[0] & !A1L721);
+
+
+--A1L331 is v_count[1]~255 at LCCOMB_X47_Y26_N14
+A1L331 = v_count[1] & !A1L131 # !v_count[1] & (A1L131 # GND);
+
+--A1L431 is v_count[1]~256 at LCCOMB_X47_Y26_N14
+A1L431 = CARRY(!A1L131 # !v_count[1]);
+
+
+--A1L631 is v_count[2]~257 at LCCOMB_X47_Y26_N16
+A1L631 = v_count[2] & (A1L431 $ GND) # !v_count[2] & !A1L431 & VCC;
+
+--A1L731 is v_count[2]~258 at LCCOMB_X47_Y26_N16
+A1L731 = CARRY(v_count[2] & !A1L431);
+
+
+--A1L931 is v_count[3]~259 at LCCOMB_X47_Y26_N18
+A1L931 = v_count[3] & !A1L731 # !v_count[3] & (A1L731 # GND);
+
+--A1L041 is v_count[3]~260 at LCCOMB_X47_Y26_N18
+A1L041 = CARRY(!A1L731 # !v_count[3]);
+
+
+--A1L241 is v_count[4]~261 at LCCOMB_X47_Y26_N20
+A1L241 = v_count[4] & (A1L041 $ GND) # !v_count[4] & !A1L041 & VCC;
+
+--A1L341 is v_count[4]~262 at LCCOMB_X47_Y26_N20
+A1L341 = CARRY(v_count[4] & !A1L041);
+
+
+--A1L541 is v_count[5]~263 at LCCOMB_X47_Y26_N22
+A1L541 = v_count[5] & !A1L341 # !v_count[5] & (A1L341 # GND);
+
+--A1L641 is v_count[5]~264 at LCCOMB_X47_Y26_N22
+A1L641 = CARRY(!A1L341 # !v_count[5]);
+
+
+--A1L841 is v_count[6]~265 at LCCOMB_X47_Y26_N24
+A1L841 = v_count[6] & (A1L641 $ GND) # !v_count[6] & !A1L641 & VCC;
+
+--A1L941 is v_count[6]~266 at LCCOMB_X47_Y26_N24
+A1L941 = CARRY(v_count[6] & !A1L641);
+
+
+--A1L151 is v_count[7]~267 at LCCOMB_X47_Y26_N26
+A1L151 = v_count[7] & !A1L941 # !v_count[7] & (A1L941 # GND);
+
+--A1L251 is v_count[7]~268 at LCCOMB_X47_Y26_N26
+A1L251 = CARRY(!A1L941 # !v_count[7]);
+
+
+--A1L451 is v_count[8]~269 at LCCOMB_X47_Y26_N28
+A1L451 = v_count[8] & (A1L251 $ GND) # !v_count[8] & !A1L251 & VCC;
+
+--A1L551 is v_count[8]~270 at LCCOMB_X47_Y26_N28
+A1L551 = CARRY(v_count[8] & !A1L251);
+
+
+--A1L751 is v_count[9]~271 at LCCOMB_X47_Y26_N30
+A1L751 = A1L551 $ v_count[9];
+
+
+--A1L45 is LessThan~712 at LCCOMB_X48_Y26_N30
+A1L45 = !v_count[1] & !v_count[0] # !v_count[2] # !v_count[3];
+
+
+--A1L55 is LessThan~713 at LCCOMB_X47_Y26_N0
+A1L55 = !v_count[4] & !v_count[5] & !v_count[6] & !v_count[7];
+
+
+--A1L65 is LessThan~714 at LCCOMB_X47_Y26_N10
+A1L65 = A1L45 & !v_count[8] & A1L55;
+
+
+--A1L811 is process0~365 at LCCOMB_X46_Y26_N30
+A1L811 = !h_count[7] & !h_count[8] # !h_count[9] # !v_count[9];
+
+
+--A1L911 is process0~366 at LCCOMB_X47_Y26_N4
+A1L911 = !A1L811 & !A1L65 & (h_count[8] # !A1L411);
+
+
+--A1L34 is h_count~420 at LCCOMB_X46_Y27_N16
+A1L34 = A1L1 & (A1L521 # !A1L621 # !h_count[5]);
+
+
+--A1L44 is h_count~421 at LCCOMB_X46_Y27_N22
+A1L44 = A1L11 & (A1L521 # !h_count[5] # !A1L621);
+
+
+--red is red at PIN_K23
+--operation mode is input
+
+red = INPUT();
+
+
+--green is green at PIN_H19
+--operation mode is input
+
+green = INPUT();
+
+
+--blue is blue at PIN_H25
+--operation mode is input
+
+blue = INPUT();
+
+
+--clock_50Mhz is clock_50Mhz at PIN_N2
+--operation mode is input
+
+clock_50Mhz = INPUT();
+
+
+--red_out is red_out at PIN_G25
+--operation mode is output
+
+red_out = OUTPUT(A1L321Q);
+
+
+--green_out is green_out at PIN_G26
+--operation mode is output
+
+green_out = OUTPUT(A1L92Q);
+
+
+--blue_out is blue_out at PIN_J24
+--operation mode is output
+
+blue_out = OUTPUT(A1L42Q);
+
+
+--horiz_sync_out is horiz_sync_out at PIN_D18
+--operation mode is output
+
+horiz_sync_out = OUTPUT(A1L74Q);
+
+
+--vert_sync_out is vert_sync_out at PIN_H17
+--operation mode is output
+
+vert_sync_out = OUTPUT(A1L161Q);
+
+
+--video_on is video_on at PIN_K24
+--operation mode is output
+
+video_on = OUTPUT(A1L561);
+
+
+--pixel_clock is pixel_clock at PIN_AA7
+--operation mode is output
+
+pixel_clock = OUTPUT(A1L85);
+
+
+--pixel_row[0] is pixel_row[0] at PIN_B20
+--operation mode is output
+
+pixel_row[0] = OUTPUT(A1L68Q);
+
+
+--pixel_row[1] is pixel_row[1] at PIN_E18
+--operation mode is output
+
+pixel_row[1] = OUTPUT(A1L98Q);
+
+
+--pixel_row[2] is pixel_row[2] at PIN_C19
+--operation mode is output
+
+pixel_row[2] = OUTPUT(A1L29Q);
+
+
+--pixel_row[3] is pixel_row[3] at PIN_H26
+--operation mode is output
+
+pixel_row[3] = OUTPUT(A1L59Q);
+
+
+--pixel_row[4] is pixel_row[4] at PIN_E20
+--operation mode is output
+
+pixel_row[4] = OUTPUT(A1L89Q);
+
+
+--pixel_row[5] is pixel_row[5] at PIN_J23
+--operation mode is output
+
+pixel_row[5] = OUTPUT(A1L001Q);
+
+
+--pixel_row[6] is pixel_row[6] at PIN_K21
+--operation mode is output
+
+pixel_row[6] = OUTPUT(A1L301Q);
+
+
+--pixel_row[7] is pixel_row[7] at PIN_K18
+--operation mode is output
+
+pixel_row[7] = OUTPUT(A1L601Q);
+
+
+--pixel_row[8] is pixel_row[8] at PIN_D19
+--operation mode is output
+
+pixel_row[8] = OUTPUT(A1L901Q);
+
+
+--pixel_row[9] is pixel_row[9] at PIN_AC8
+--operation mode is output
+
+pixel_row[9] = OUTPUT(GND);
+
+
+--pixel_column[0] is pixel_column[0] at PIN_G16
+--operation mode is output
+
+pixel_column[0] = OUTPUT(A1L16Q);
+
+
+--pixel_column[1] is pixel_column[1] at PIN_B16
+--operation mode is output
+
+pixel_column[1] = OUTPUT(A1L36Q);
+
+
+--pixel_column[2] is pixel_column[2] at PIN_A17
+--operation mode is output
+
+pixel_column[2] = OUTPUT(A1L66Q);
+
+
+--pixel_column[3] is pixel_column[3] at PIN_B17
+--operation mode is output
+
+pixel_column[3] = OUTPUT(A1L96Q);
+
+
+--pixel_column[4] is pixel_column[4] at PIN_D17
+--operation mode is output
+
+pixel_column[4] = OUTPUT(A1L17Q);
+
+
+--pixel_column[5] is pixel_column[5] at PIN_C17
+--operation mode is output
+
+pixel_column[5] = OUTPUT(A1L37Q);
+
+
+--pixel_column[6] is pixel_column[6] at PIN_J17
+--operation mode is output
+
+pixel_column[6] = OUTPUT(A1L67Q);
+
+
+--pixel_column[7] is pixel_column[7] at PIN_F16
+--operation mode is output
+
+pixel_column[7] = OUTPUT(A1L87Q);
+
+
+--pixel_column[8] is pixel_column[8] at PIN_D16
+--operation mode is output
+
+pixel_column[8] = OUTPUT(A1L08Q);
+
+
+--pixel_column[9] is pixel_column[9] at PIN_E15
+--operation mode is output
+
+pixel_column[9] = OUTPUT(A1L28Q);
+
+
+
+
+
+--C1L2 is video_PLL:video_PLL_inst|altpll:altpll_component|_clk0~clkctrl at CLKCTRL_G2
+C1L2 = cycloneii_clkctrl(.INCLK[0] = C1__clk0) WITH (clock_type = "Global Clock");
+
+
+--A1L85 is pixel_clock~clkctrl_e at CLKCTRL_X0_Y1_N1
+A1L85 = cycloneii_clkctrl(.INCLK[0] = C1__clk0) WITH (clock_type = "External Clock Output");
+
+
+--A1L84 is horiz_sync_out~reg0feeder at LCCOMB_X48_Y28_N0
+A1L84 = horiz_sync;
+
+
+--A1L261 is vert_sync_out~reg0feeder at LCCOMB_X48_Y26_N24
+A1L261 = vert_sync;
+
+
+--A1L38 is pixel_column[9]~reg0feeder at LCCOMB_X46_Y27_N28
+A1L38 = h_count[9];
+
+
+--A1L101 is pixel_row[5]~reg0feeder at LCCOMB_X48_Y26_N18
+A1L101 = v_count[5];
+
+
+--A1L401 is pixel_row[6]~reg0feeder at LCCOMB_X48_Y26_N20
+A1L401 = v_count[6];
+
+
+--A1L701 is pixel_row[7]~reg0feeder at LCCOMB_X48_Y26_N16
+A1L701 = v_count[7];
+
+
+--A1L011 is pixel_row[8]~reg0feeder at LCCOMB_X48_Y26_N8
+A1L011 = v_count[8];
+
+
+--A1L78 is pixel_row[0]~reg0feeder at LCCOMB_X48_Y26_N10
+A1L78 = v_count[0];
+
+
+--A1L09 is pixel_row[1]~reg0feeder at LCCOMB_X48_Y26_N14
+A1L09 = v_count[1];
+
+
+--A1L39 is pixel_row[2]~reg0feeder at LCCOMB_X48_Y26_N22
+A1L39 = v_count[2];
+
+
+--A1L69 is pixel_row[3]~reg0feeder at LCCOMB_X48_Y26_N28
+A1L69 = v_count[3];
+
+
+--A1L46 is pixel_column[1]~reg0feeder at LCCOMB_X46_Y27_N24
+A1L46 = h_count[1];
+
+
+--A1L76 is pixel_column[2]~reg0feeder at LCCOMB_X46_Y27_N4
+A1L76 = h_count[2];
+
+
+--A1L47 is pixel_column[5]~reg0feeder at LCCOMB_X46_Y27_N12
+A1L47 = h_count[5];
+
+

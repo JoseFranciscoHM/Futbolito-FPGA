@@ -1,0 +1,201 @@
+-- MAX+plus II Compiler Fit File      
+-- Version 10.1 06/12/2001            
+-- Compiled: 06/30/2001 12:21:17      
+
+-- Copyright (C) 1988-2001 Altera Corporation
+-- Any megafunction design, and related net list (encrypted or decrypted),
+-- support information, device programming or simulation file, and any other
+-- associated documentation or information provided by Altera or a partner
+-- under Altera's Megafunction Partnership Program may be used only to
+-- program PLD devices (but not masked PLD devices) from Altera.  Any other
+-- use of such megafunction design, net list, support information, device
+-- programming or simulation file, or any other related documentation or
+-- information is prohibited for any other purpose, including, but not
+-- limited to modification, reverse engineering, de-compiling, or use with
+-- any other silicon devices, unless such use is explicitly licensed under
+-- a separate agreement with Altera or a megafunction partner.  Title to
+-- the intellectual property, including patents, copyrights, trademarks,
+-- trade secrets, or maskworks, embodied in any such megafunction design,
+-- net list, support information, device programming or simulation file, or
+-- any other related documentation or information provided by Altera or a
+-- megafunction partner, remains with Altera, the megafunction partner, or
+-- their respective licensors.  No other licenses, including any licenses
+-- needed under any third party's intellectual property, are provided herein.
+
+CHIP "vga_test"
+BEGIN
+
+    DEVICE = "EPF10K20RC240-4";
+
+    "Clock"                        : INPUT_PIN  = 91     ;
+    "Blue"                         : OUTPUT_PIN = 238    ;
+    "Green"                        : OUTPUT_PIN = 237    ;
+    "Horiz_Sync"                   : OUTPUT_PIN = 240    ;
+    "Red"                          : OUTPUT_PIN = 236    ;
+    "Vert_sync"                    : OUTPUT_PIN = 239    ;
+    "|VGA_SYNC:1|LPM_ADD_SUB:323|addcore:adder|:83" : LOCATION   = LC4_F21;
+    "|VGA_SYNC:1|LPM_ADD_SUB:323|addcore:adder|:91" : LOCATION   = LC8_F21;
+    "|VGA_SYNC:1|LPM_ADD_SUB:323|addcore:adder|:99" : LOCATION   = LC4_F13;
+    "|VGA_SYNC:1|LPM_ADD_SUB:323|addcore:adder|:103" : LOCATION   = LC7_F13;
+    "|VGA_SYNC:1|LPM_ADD_SUB:731|addcore:adder|:79" : LOCATION   = LC6_F19;
+    "|VGA_SYNC:1|LPM_ADD_SUB:731|addcore:adder|:83" : LOCATION   = LC2_F19;
+    "|VGA_SYNC:1|LPM_ADD_SUB:731|addcore:adder|:87" : LOCATION   = LC4_F16;
+    "|VGA_SYNC:1|LPM_ADD_SUB:731|addcore:adder|:91" : LOCATION   = LC7_F16;
+    "|VGA_SYNC:1|LPM_ADD_SUB:731|addcore:adder|:95" : LOCATION   = LC8_F16;
+    "|VGA_SYNC:1|LPM_ADD_SUB:731|addcore:adder|:99" : LOCATION   = LC7_F24;
+    "|VGA_SYNC:1|LPM_ADD_SUB:731|addcore:adder|:103" : LOCATION   = LC3_F24;
+    "|VGA_SYNC:1|LPM_ADD_SUB:731|addcore:adder|:107" : LOCATION   = LC6_F24;
+    "|VGA_SYNC:1|:5"               : LOCATION   = LC4_F23;
+    "|VGA_SYNC:1|:7"               : LOCATION   = LC8_F23;
+    "|VGA_SYNC:1|:9"               : LOCATION   = LC5_F23;
+    "|VGA_SYNC:1|:11"              : LOCATION   = LC1_F18;
+    "|VGA_SYNC:1|:13"              : LOCATION   = LC1_A24;
+    "|VGA_SYNC:1|:25"              : LOCATION   = LC6_F16;
+    "|VGA_SYNC:1|:45"              : LOCATION   = LC3_F23;
+    "|VGA_SYNC:1|:55"              : LOCATION   = LC6_F13;  -- |VGA_SYNC:1|h_count9
+    "|VGA_SYNC:1|:56"              : LOCATION   = LC1_F13;  -- |VGA_SYNC:1|h_count8
+    "|VGA_SYNC:1|:57"              : LOCATION   = LC8_F17;  -- |VGA_SYNC:1|h_count7
+    "|VGA_SYNC:1|:58"              : LOCATION   = LC3_F13;  -- |VGA_SYNC:1|h_count6
+    "|VGA_SYNC:1|:59"              : LOCATION   = LC2_F13;  -- |VGA_SYNC:1|h_count5
+    "|VGA_SYNC:1|:60"              : LOCATION   = LC6_F21;  -- |VGA_SYNC:1|h_count4
+    "|VGA_SYNC:1|:61"              : LOCATION   = LC3_F21;  -- |VGA_SYNC:1|h_count3
+    "|VGA_SYNC:1|:62"              : LOCATION   = LC7_F21;  -- |VGA_SYNC:1|h_count2
+    "|VGA_SYNC:1|:63"              : LOCATION   = LC5_F21;  -- |VGA_SYNC:1|h_count1
+    "|VGA_SYNC:1|:64"              : LOCATION   = LC1_F20;  -- |VGA_SYNC:1|h_count0
+    "|VGA_SYNC:1|:65"              : LOCATION   = LC8_F18;  -- |VGA_SYNC:1|horiz_sync
+    "|VGA_SYNC:1|:66"              : LOCATION   = LC2_F16;  -- |VGA_SYNC:1|v_count9
+    "|VGA_SYNC:1|:67"              : LOCATION   = LC2_F24;  -- |VGA_SYNC:1|v_count8
+    "|VGA_SYNC:1|:68"              : LOCATION   = LC8_F24;  -- |VGA_SYNC:1|v_count7
+    "|VGA_SYNC:1|:69"              : LOCATION   = LC5_F24;  -- |VGA_SYNC:1|v_count6
+    "|VGA_SYNC:1|:70"              : LOCATION   = LC5_F16;  -- |VGA_SYNC:1|v_count5
+    "|VGA_SYNC:1|:71"              : LOCATION   = LC3_F16;  -- |VGA_SYNC:1|v_count4
+    "|VGA_SYNC:1|:72"              : LOCATION   = LC8_F19;  -- |VGA_SYNC:1|v_count3
+    "|VGA_SYNC:1|:73"              : LOCATION   = LC5_F19;  -- |VGA_SYNC:1|v_count2
+    "|VGA_SYNC:1|:74"              : LOCATION   = LC1_F19;  -- |VGA_SYNC:1|v_count1
+    "|VGA_SYNC:1|:75"              : LOCATION   = LC4_F19;  -- |VGA_SYNC:1|v_count0
+    "|VGA_SYNC:1|:76"              : LOCATION   = LC3_F19;  -- |VGA_SYNC:1|vert_sync
+    "|VGA_SYNC:1|:77"              : LOCATION   = LC7_F23;  -- |VGA_SYNC:1|video_on_h
+    "|VGA_SYNC:1|:78"              : LOCATION   = LC6_F23;  -- |VGA_SYNC:1|video_on_v
+    "|VGA_SYNC:1|:262"             : LOCATION   = LC8_F13;
+    "|VGA_SYNC:1|~262~1"           : LOCATION   = LC5_F13;
+    "|VGA_SYNC:1|~262~2"           : LOCATION   = LC4_F18;
+    "|VGA_SYNC:1|~427~1"           : LOCATION   = LC7_F18;
+    "|VGA_SYNC:1|:490"             : LOCATION   = LC6_F18;
+    "|VGA_SYNC:1|:555"             : LOCATION   = LC4_F24;
+    "|VGA_SYNC:1|~555~1"           : LOCATION   = LC1_F16;
+    "|VGA_SYNC:1|:613"             : LOCATION   = LC3_F18;
+    "|VGA_SYNC:1|:631"             : LOCATION   = LC2_F18;
+    "|VGA_SYNC:1|~631~1"           : LOCATION   = LC1_F14;
+    "|VGA_SYNC:1|:643"             : LOCATION   = LC1_F21;
+    "|VGA_SYNC:1|:659"             : LOCATION   = LC5_F18;
+    "|VGA_SYNC:1|:670"             : LOCATION   = LC2_F21;
+    "|VGA_SYNC:1|~670~1"           : LOCATION   = LC5_F14;
+    "|VGA_SYNC:1|~670~2"           : LOCATION   = LC1_F23;
+    "|VGA_SYNC:1|~967~1"           : LOCATION   = LC7_F19;
+    "|VGA_SYNC:1|:996"             : LOCATION   = LC2_F23;
+    "|VGA_SYNC:1|:1170"            : LOCATION   = LC1_F24;
+
+END;
+
+INTERNAL_INFO "vga_test"
+BEGIN
+	DEVICE = EPF10K20RC240-4;
+    OD5P91  : LORAX = "1:FB5->LC4_F23,->LC8_F23,->LC5_F23,->LC1_F18,->LC1_A24,->LC6_F16,->LC3_F23,->LC6_F13,->LC1_F13,->LC8_F17,->LC3_F13,->LC2_F13,->LC6_F21,->LC3_F21,->LC7_F21,->LC5_F21,->LC1_F20,->LC8_F18,->LC2_F16,->LC2_F24,->LC8_F24,->LC5_F24,->LC5_F16,->LC3_F16,->LC8_F19,->LC5_F19,->LC1_F19,->LC4_F19,->LC3_F19,->LC7_F23,->LC6_F23|";
+    LC8_F21 : LORAX = "1:MSW7R5C20,HHR37R5,PA12R5C12->LC4_F13,->LC7_F13,->LC3_F13,->LC2_F13,->LC5_F13|";
+    LC4_F13 : LORAX = "1:MSW3R5C12,HHR9R5,PA13R5C16->LC8_F17|";
+    LC2_F19 : LORAX = "1:MSW1R5C18,HHR8R5,PA14R5C15->LC4_F16|";
+    LC8_F16 : LORAX = "1:MSW7R5C15,HHR27R5,PA8R5C23->LC7_F24,->LC3_F24,->LC6_F24,->LC5_F24|";
+    LC6_F24 : LORAX = "1:MSW5R5C23,HHR39R5,PA10R5C15->LC2_F16|";
+    LC4_F23 : LORAX = "1:MSW3R5C22,V11C22->OV0C22P236|";
+    LC8_F23 : LORAX = "1:MSW7R5C23,V22C23->OV1C23P237|";
+    LC5_F23 : LORAX = "1:MSW4R5C23,V14C23->OV0C23P238|";
+    LC1_F18 : LORAX = "1:MSW1R5C16,V4C16,HHR5R0->OH1R0P240|";
+    LC1_A24 : LORAX = "1:MSW0R0C23,HHR20R0->OH0R0P239|";
+    LC6_F16 : LORAX = "1:MSW6R5C14,HHR40R5,PA9R5C22->LC8_F23|";
+    LC6_F13 : LORAX = "1:MSW5R5C12,HHR34R5|2:PA1R5C17->LC5_F18|,2:PA1R5C22->LC7_F23,->LC1_F23,->LC2_F23||";
+    LC1_F13 : LORAX = "1:MSW0R5C12,HHR22R5|2:PA2R5C17->LC3_F18|,2:PA2R5C22->LC7_F23,->LC1_F23,->LC2_F23||";
+    LC8_F17 : LORAX = "1:MSW7R5C16,HHR25R5|2:PA3R5C12->LC7_F13,->LC8_F13|,2:PA3R5C17->LC3_F18|,2:PA3R5C22->LC7_F23,->LC1_F23,->LC2_F23||";
+    LC3_F13 : LORAX = "1:MSW2R5C12,HHR3R5|2:PA19R5C13->LC5_F14|,2:PA19R5C17->LC8_F18,->LC4_F18,->LC3_F18||";
+    LC2_F13 : LORAX = "1:MSW1R5C13,HHR11R5|2:PA4R5C13->LC1_F14|,2:PA4R5C17->LC4_F18,->LC7_F18,->LC2_F18||";
+    LC6_F21 : LORAX = "1:MSW5R5C20,HHR45R5|2:PA20R5C13->LC1_F14|,2:PA20R5C17->LC7_F18,->LC6_F18,->LC2_F18|,2:PA4R5C22->LC3_F23||";
+    LC3_F21 : LORAX = "1:MSW2R5C20,HHR1R5|2:PA0R5C13->LC1_F14|,2:PA0R5C17->LC7_F18,->LC6_F18,->LC2_F18||";
+    LC7_F21 : LORAX = "1:MSW6R5C21,HHR26R5|2:PA9R5C13->LC5_F14|,2:PA9R5C17->LC7_F18||";
+    LC1_F20 : LORAX = "1:MSW0R5C19,HHR23R5,PA1R5C20->LC4_F21,->LC7_F21,->LC5_F21,->LC1_F21,->LC2_F21|";
+    LC2_F16 : LORAX = "1:MSW1R5C15,HHR12R5|2:PA5R5C17->LC5_F18|,2:PA3R5C18->LC7_F19|,2:PA5R5C22->LC6_F23||";
+    LC2_F24 : LORAX = "1:MSW1R5C23,HHR16R5,PA20R5C15->LC1_F16|";
+    LC5_F16 : LORAX = "1:MSW4R5C15,G60R5,PA0R5C23->LC1_F24|";
+    LC3_F16 : LORAX = "1:MSW2R5C15,HHR14R5|2:PA1R5C18->LC7_F19|,2:PA1R5C23->LC4_F24||";
+    LC8_F19 : LORAX = "1:MSW7R5C19,HHR35R5,PA0R5C15->LC4_F16,->LC1_F16|";
+    LC5_F19 : LORAX = "1:MSW4R5C18,HHR41R5,PA8R5C15->LC1_F16|";
+    LC3_F19 : LORAX = "1:MSW2R5C18,V8C18,HHR3R0,PA19R0C23->LC1_A24|";
+    LC8_F13 : LORAX = "1:MSW7R5C12,HHR46R5|2:PA3R5C16->LC8_F17|,2:PA3R5C20->LC6_F21,->LC3_F21,->LC7_F21,->LC5_F21||";
+    LC1_F16 : LORAX = "1:MSW0R5C15,HHR19R5,PA17R5C23->LC4_F24|";
+    LC4_F24 : LORAX = "1:MSW3R5C23,HHR10R5,PA12R5C17->LC5_F18|";
+    LC1_F21 : LORAX = "1:MSW0R5C20,HHR21R5,PA15R5C17->LC6_F18,->LC2_F18|";
+    LC5_F18 : LORAX = "1:|2:MSW5R5C16,HHR42R5|3:PA7R5C15->LC2_F16,->LC5_F16,->LC3_F16|,3:PA7R5C23->LC2_F24,->LC8_F24,->LC5_F24||,2:MSW4R5C17,HHR30R5,PA5R5C18->LC8_F19,->LC5_F19,->LC1_F19,->LC4_F19||";
+    LC5_F14 : LORAX = "1:MSW4R5C13,HHR36R5,PA20R5C20->LC2_F21|";
+    LC1_F23 : LORAX = "1:MSW0R5C22,HHR18R5|2:PA18R5C17->LC8_F18|,2:PA18R5C20->LC2_F21||";
+    LC2_F21 : LORAX = "1:MSW1R5C20,HHR2R5|2:PA3R5C15->LC2_F16,->LC5_F16,->LC3_F16|,2:PA20R5C18->LC8_F19,->LC5_F19,->LC1_F19,->LC4_F19|,2:PA20R5C23->LC2_F24,->LC8_F24,->LC5_F24||";
+    LC1_F24 : LORAX = "1:MSW0R5C23,HHR20R5|2:PA16R5C15->LC6_F16|,2:PA16R5C18->LC3_F19|,2:PA16R5C22->LC6_F23||";
+	LC4_F21 : LORAX2 = "X, LC5_F21, LC1_F20, LC7_F21";
+	LC8_F21 : LORAX2 = "X, LC6_F21, LC3_F21, LC4_F21";
+	LC4_F13 : LORAX2 = "X, LC3_F13, LC2_F13, LC8_F21";
+	LC7_F13 : LORAX2 = "LC8_F17, LC3_F13, LC2_F13, LC8_F21";
+	LC6_F19 : LORAX2 = "X, X, LC1_F19, LC4_F19";
+	LC2_F19 : LORAX2 = "X, LC5_F19, LC1_F19, LC4_F19";
+	LC4_F16 : LORAX2 = "X, X, LC8_F19, LC2_F19";
+	LC7_F16 : LORAX2 = "X, X, LC3_F16, LC4_F16";
+	LC8_F16 : LORAX2 = "X, LC3_F16, LC5_F16, LC4_F16";
+	LC7_F24 : LORAX2 = "X, X, LC5_F24, LC8_F16";
+	LC3_F24 : LORAX2 = "X, LC8_F24, LC5_F24, LC8_F16";
+	LC6_F24 : LORAX2 = "LC8_F24, LC5_F24, LC2_F24, LC8_F16";
+	LC4_F23 : LORAX2 = "X, X, LC6_F23, LC7_F23";
+	LC8_F23 : LORAX2 = "X, LC6_F16, LC6_F23, LC7_F23";
+	LC5_F23 : LORAX2 = "X, LC3_F23, LC6_F23, LC7_F23";
+	LC1_F18 : LORAX2 = "X, X, X, LC8_F18";
+	LC1_A24 : LORAX2 = "X, X, X, LC3_F19";
+	LC6_F16 : LORAX2 = "LC6_F16, LC1_F24, LC2_F16, LC3_F16";
+	LC3_F23 : LORAX2 = "X, LC3_F23, LC2_F23, LC6_F21";
+	LC6_F13 : LORAX2 = "LC6_F13, LC1_F13, LC7_F13, LC8_F13";
+	LC1_F13 : LORAX2 = "X, LC1_F13, LC7_F13, LC8_F13";
+	LC8_F17 : LORAX2 = "X, LC8_F17, LC4_F13, LC8_F13";
+	LC3_F13 : LORAX2 = "LC3_F13, LC2_F13, LC8_F13, LC8_F21";
+	LC2_F13 : LORAX2 = "X, LC2_F13, LC8_F13, LC8_F21";
+	LC6_F21 : LORAX2 = "LC6_F21, LC3_F21, LC8_F13, LC4_F21";
+	LC3_F21 : LORAX2 = "X, LC3_F21, LC8_F13, LC4_F21";
+	LC7_F21 : LORAX2 = "LC5_F21, LC1_F20, LC8_F13, LC7_F21";
+	LC5_F21 : LORAX2 = "X, LC5_F21, LC1_F20, LC8_F13";
+	LC1_F20 : LORAX2 = "X, X, X, LC1_F20";
+	LC8_F18 : LORAX2 = "LC7_F18, LC1_F23, LC3_F13, LC6_F18";
+	LC2_F16 : LORAX2 = "LC2_F16, LC2_F21, LC5_F18, LC6_F24";
+	LC2_F24 : LORAX2 = "LC2_F24, LC2_F21, LC5_F18, LC3_F24";
+	LC8_F24 : LORAX2 = "LC8_F24, LC2_F21, LC5_F18, LC7_F24";
+	LC5_F24 : LORAX2 = "LC5_F24, LC2_F21, LC5_F18, LC8_F16";
+	LC5_F16 : LORAX2 = "LC5_F16, LC2_F21, LC7_F16, LC5_F18";
+	LC3_F16 : LORAX2 = "LC3_F16, LC2_F21, LC5_F18, LC4_F16";
+	LC8_F19 : LORAX2 = "LC2_F21, LC8_F19, LC5_F18, LC2_F19";
+	LC5_F19 : LORAX2 = "LC6_F19, LC2_F21, LC5_F18, LC5_F19";
+	LC1_F19 : LORAX2 = "LC2_F21, LC5_F18, LC1_F19, LC4_F19";
+	LC4_F19 : LORAX2 = "X, LC2_F21, LC5_F18, LC4_F19";
+	LC3_F19 : LORAX2 = "LC1_F24, LC7_F19, LC8_F19, LC5_F19";
+	LC7_F23 : LORAX2 = "X, LC6_F13, LC8_F17, LC1_F13";
+	LC6_F23 : LORAX2 = "X, X, LC2_F16, LC1_F24";
+	LC5_F13 : LORAX2 = "LC6_F13, LC3_F13, LC2_F13, LC8_F21";
+	LC4_F18 : LORAX2 = "X, X, LC3_F13, LC2_F13";
+	LC8_F13 : LORAX2 = "X, LC1_F13, LC8_F17, LC5_F13";
+	LC7_F18 : LORAX2 = "LC2_F13, LC3_F21, LC6_F21, LC7_F21";
+	LC6_F18 : LORAX2 = "LC4_F18, LC6_F21, LC3_F21, LC1_F21";
+	LC1_F16 : LORAX2 = "LC5_F16, LC2_F24, LC8_F19, LC5_F19";
+	LC4_F24 : LORAX2 = "LC5_F24, LC8_F24, LC3_F16, LC1_F16";
+	LC3_F18 : LORAX2 = "LC3_F13, LC1_F13, LC8_F17, LC2_F18";
+	LC1_F14 : LORAX2 = "X, LC2_F13, LC3_F21, LC6_F21";
+	LC2_F18 : LORAX2 = "LC2_F13, LC3_F21, LC6_F21, LC1_F21";
+	LC1_F21 : LORAX2 = "X, LC5_F21, LC1_F20, LC7_F21";
+	LC5_F18 : LORAX2 = "LC2_F16, LC6_F13, LC4_F24, LC3_F18";
+	LC5_F14 : LORAX2 = "X, LC3_F13, LC1_F14, LC7_F21";
+	LC1_F23 : LORAX2 = "X, LC6_F13, LC1_F13, LC8_F17";
+	LC2_F21 : LORAX2 = "LC1_F23, LC5_F14, LC5_F21, LC1_F20";
+	LC7_F19 : LORAX2 = "LC2_F16, LC3_F16, LC4_F19, LC1_F19";
+	LC2_F23 : LORAX2 = "X, LC6_F13, LC8_F17, LC1_F13";
+	LC1_F24 : LORAX2 = "LC8_F24, LC5_F24, LC2_F24, LC5_F16";
+END;

@@ -1,0 +1,40 @@
+# Quartus II / Prime temporary files and directories
+db/
+incremental_db/
+greybox_tmp/
+output_files/
+simulation/
+stp1_auto_stripped.stp
+*.rpt
+*.sof
+*.pof
+*.summary
+*.done
+*.jdi
+*.pin
+*.qws
+*.bak
+*.txt
+*.smsg
+*.temp
+*.vhd.bak
+*.txt.bak
+
+# MacOS files
+.DS_Store
+._*
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Otros
+WS_FTP.LOG
+*.synctex*
+*.nav
+*.snm
+*.toc
+*.aux
+*.log
+*.out
