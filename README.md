@@ -1,4 +1,4 @@
-# Futbolito FPGA ⚽🎮
+# Futbolito FPGA V1
 
 ¡Bienvenido al proyecto **Futbolito FPGA**! Este es un juego de fútbol estilo "futbolito" (foosball) desarrollado íntegramente en VHDL para ser ejecutado en una placa de desarrollo FPGA (diseñado principalmente para la **Terasic DE2-115**).
 
